@@ -1,0 +1,19 @@
+#wrapper>ul {
+    display: none;
+}
+
+#content>nav {
+    display: none;
+}
+
+#back_order {
+    display: none !important;
+}
+
+#print_order {
+    display: none !important;
+}
+
+#confirmation_order {
+    display: none !important;
+}
