@@ -248,12 +248,12 @@
                                     <div class="form-group col-sm-12">
                                         <label>Trạng thái hoạt động</label>
                                         <div class="custom-control custom-radio">
-                                            <input class="custom-control-input" type="radio" id="active1" value="1" name="active" checked>
-                                            <label for="active1" class="custom-control-label">Hoạt động</label>
+                                            <input class="custom-control-input" type="radio" id="status1" value="1" name="status" checked>
+                                            <label for="status1" class="custom-control-label">Hoạt động</label>
                                         </div>
                                         <div class="custom-control custom-radio">
-                                            <input class="custom-control-input" type="radio" id="active2" value="0" name="active">
-                                            <label for="active2" class="custom-control-label">Tạm dừng</label>
+                                            <input class="custom-control-input" type="radio" id="status2" value="0" name="status">
+                                            <label for="status2" class="custom-control-label">Tạm dừng</label>
                                         </div>
                                     </div>
                                     <div class="form-group col-sm-12">
@@ -303,7 +303,34 @@
 
     <!-- Page level custom scripts -->
     <script src="../../../js/demo/datatables-demo.js"></script>
+    <!-- Axios -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 
+    <script>
+        $("form").submit(function(e) {
+            e.preventDefault();
+            name = $('[name=name]').val()
+            url = $('[name=url]').val()
+            image = $('[name=image]').val()
+            content = $('[name=content]').val()
+            status = $('[name=status]:checked').val()
+            console.log(name, url, image, content, status)
+            axios.post('http://localhost:3000/slider/add', {
+                    name: name,
+                    status: status,
+                    url: url,
+                    content: content,
+                    image: image
+                })
+                .then(function(response) {
+                    console.log(response)
+                })
+                .catch(function(error) {
+                    console.log(error)
+                });
+        })
+    </script>
 </body>
 
 </html>

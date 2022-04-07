@@ -316,8 +316,6 @@
 
             name = $('[name=name]').val()
             active = $('[name=active]:checked').val()
-            console.log(active)
-
             axios.post('http://localhost:3000/category/add', {
                 name: name,
                 active: active
