@@ -26,6 +26,7 @@
     <!-- Custom styles for this page -->
     <link href="../../../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
+
 </head>
 
 <body id="page-top">
@@ -242,7 +243,7 @@
                                     <div class="form-group col-sm-12">
                                         <label for="id">Tên danh mục</label>
                                         <input type="text" class="form-control" id="name" name="name"
-                                            placeholder="Nhập tên danh mục" required pattern="\S+">
+                                            placeholder="Nhập tên danh mục" required>
                                     </div>
                                     <div class="form-group col-sm-12">
                                         <label>Trạng thái hoạt động</label>
@@ -310,23 +311,62 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 
-    <script>
-        $("form").submit(function (e) {
-            e.preventDefault();
+    <!-- Utility -->
+    <script src="../../../js/utility.js"></script>
 
-            name = $('[name=name]').val()
-            active = $('[name=active]:checked').val()
-            axios.post('http://localhost:3000/category/add', {
-                name: name,
-                active: active
-            })
-                .then(function (response) {
-                    console.log(response)
+    <script>
+        const id = getUrlParameter('id')
+        if (id) {
+            axios.get('http://localhost:3000/category/' + id)
+                .then(function (res) {
+                    console.log(res)
+                    $('[name=name]').val(res.data.category[0].name)
                 })
                 .catch(function (error) {
                     console.log(error)
-                });
-        })
+                })
+
+            // UPDATE CATEGORY
+            $("form").submit(function (e) {
+                e.preventDefault();
+
+                name = $('[name=name]').val()
+                active = $('[name=active]:checked').val()
+                axios.post('http://localhost:3000/category/update/'+id, {
+                    name: name,
+                    active: active
+                })
+                    .then(function (response) {
+                        console.log(response)
+                        window.location.href = "/view/admin/category/index.html";
+                    })
+                    .catch(function (error) {
+                        alert("Tên danh mục đã tồn tại")
+                        console.log(error)
+                    });
+            })
+        }
+        else {
+            // CREATE NEW CATEGORY
+            $("form").submit(function (e) {
+                e.preventDefault();
+
+                name = $('[name=name]').val()
+                active = $('[name=active]:checked').val()
+                axios.post('http://localhost:3000/category/add', {
+                    name: name,
+                    active: active
+                })
+                    .then(function (response) {
+                        console.log(response)
+                        window.location.href = "/view/admin/category/index.html";
+                    })
+                    .catch(function (error) {
+                        alert("Tên danh mục đã tồn tại")
+                        console.log(error)
+                    });
+            })
+        }
     </script>
 
 </body>

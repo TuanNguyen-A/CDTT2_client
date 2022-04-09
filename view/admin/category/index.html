@@ -232,7 +232,6 @@
                                 </a>
                             </div>
                         </li>
-
                     </ul>
 
                 </nav>
@@ -251,7 +250,6 @@
                                 <thead class="thead-light">
                                     <tr>
                                         <th scope="col">STT</th>
-                                        <th scope="col">Mã danh mục</th>
                                         <th scope="col">Tên danh mục</th>
                                         <th scope="col">Trạng thái </th>
                                         <th scope="col">Ngày tạo</th>
@@ -260,75 +258,8 @@
                                     </tr>
                                 </thead>
 
-                                <tbody class="page_table">
+                                <tbody id="categories" class="page_table">
 
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>VT</td>
-                                        <td>Vòng Tay</td>
-                                        <td>
-                                            <span class="badge badge-success badge-pill">active</span>
-                                            <span class="badge badge-danger badge-pill">stop</span>
-                                        </td>
-                                        <td>27/03/2021</td>
-                                        <td>27/03/2021</td>
-                                        <td>
-                                            <button class="btn btn-warning btn-sm"><i
-                                                    class="fas fa-fw fa-edit"></i></button>
-                                            <button class="btn btn-danger btn-sm"><i
-                                                    class="fas fa-fw fa-trash-alt"></i></i></button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">2</th>
-                                        <td>DC</td>
-                                        <td>Dây chuyền</td>
-                                        <td>
-                                            <span class="badge badge-success badge-pill">active</span>
-
-                                        </td>
-                                        <td>27/03/2021</td>
-                                        <td>27/03/2021</td>
-                                        <td>
-                                            <button class="btn btn-warning btn-sm"><i
-                                                    class="fas fa-fw fa-edit"></i></button>
-                                            <button class="btn btn-danger btn-sm"><i
-                                                    class="fas fa-fw fa-trash-alt"></i></i></button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">3</th>
-                                        <td>NHAN</td>
-                                        <td>Nhẫn</td>
-                                        <td>
-                                            <span class="badge badge-danger badge-pill">stop</span>
-                                        </td>
-                                        <td>27/03/2021</td>
-                                        <td>27/03/2021</td>
-                                        <td>
-                                            <button class="btn btn-warning btn-sm"><i
-                                                    class="fas fa-fw fa-edit"></i></button>
-                                            <button class="btn btn-danger btn-sm"><i
-                                                    class="fas fa-fw fa-trash-alt"></i></i></button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">4</th>
-                                        <td>BT</td>
-                                        <td>Bông tai</td>
-                                        <td>
-                                            <span class="badge badge-success badge-pill">active</span>
-                                            <span class="badge badge-danger badge-pill">stop</span>
-                                        </td>
-                                        <td>27/03/2021</td>
-                                        <td>27/03/2021</td>
-                                        <td>
-                                            <button class="btn btn-warning btn-sm"><i
-                                                    class="fas fa-fw fa-edit"></i></button>
-                                            <button class="btn btn-danger btn-sm"><i
-                                                    class="fas fa-fw fa-trash-alt"></i></i></button>
-                                        </td>
-                                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -381,13 +312,59 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 
     <script>
-        axios.post('http://localhost:3000/category/list')
-            .then(function (response) {
-                console.log(response)
+        axios.get('http://localhost:3000/category/list')
+            .then(function (res) {
+                console.log(res.data.categories)
+                const categories = res.data.categories;
+                categories.forEach((cate, i) => {
+                    createdAt = new Date(cate.createdAt)
+                    createdDate = createdAt.getDay() + "/" + createdAt.getMonth() + "/" + createdAt.getFullYear()
+                    updatedAt = new Date(cate.updatedAt)
+                    updatedDate = updatedAt.getDay() + "/" + updatedAt.getMonth() + "/" + updatedAt.getFullYear()
+                    
+                    $("#categories").append(`
+                        <tr>
+                            <th scope="row">${i + 1}</th>
+                            <td>${cate.name}</td>
+                            <td>
+                                <span class="badge badge-${cate.active == 1 ? "success" : "danger"} badge-pill">
+                                    ${cate.active == 1 ? "active" : "stop"}
+                                </span>
+                            </td>
+                            <td>${createdDate}</td>
+                            <td>${updatedDate}</td>
+                            <td>
+                                <button class="btn btn-warning btn-sm" onclick="updateCategory('${cate._id}')"><i
+                                        class="fas fa-fw fa-edit" ></i></button>
+                                <button class="btn btn-danger btn-sm" onclick="deleteCategory('${cate._id}')"><i
+                                        class="fas fa-fw fa-trash-alt"></i></i></button>
+                            </td>
+                        </tr>
+                    `)
+                });
             })
             .catch(function (error) {
                 console.log(error)
             });
+
+        function updateCategory(id) {
+            console.log("Update")
+            window.location.href= "/view/admin/category/add.html?id="+id;
+        }
+
+        function deleteCategory(id) {
+            console.log("delete", id)
+            axios.post('http://localhost:3000/category/delete', {
+                id: id
+            })
+                .then(function (res) {
+                    location.reload()
+                })
+                .catch(function (error) {
+                    console.log(error)
+                })
+
+        }
     </script>
 </body>
 
