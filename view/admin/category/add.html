@@ -248,14 +248,14 @@
                                     <div class="form-group col-sm-12">
                                         <label>Trạng thái hoạt động</label>
                                         <div class="custom-control custom-radio">
-                                            <input class="custom-control-input" type="radio" id="active1" value="1"
-                                                name="active" checked>
-                                            <label for="active1" class="custom-control-label">Hoạt động</label>
+                                            <input class="custom-control-input" type="radio" id="status1" value="1"
+                                                name="status" checked>
+                                            <label for="status1" class="custom-control-label">Hoạt động</label>
                                         </div>
                                         <div class="custom-control custom-radio">
-                                            <input class="custom-control-input" type="radio" id="active2" value="0"
-                                                name="active">
-                                            <label for="active2" class="custom-control-label">Tạm dừng</label>
+                                            <input class="custom-control-input" type="radio" id="status2" value="0"
+                                                name="status">
+                                            <label for="status2" class="custom-control-label">Tạm dừng</label>
                                         </div>
                                     </div>
                                     <div class="form-group col-sm-12">
@@ -320,7 +320,13 @@
             axios.get('http://localhost:3000/category/' + id)
                 .then(function (res) {
                     console.log(res)
-                    $('[name=name]').val(res.data.category[0].name)
+                    const cate = res.data.category[0]
+                    $('[name=name]').val(cate.name)
+                    if(cate.status == 1){
+                        $("#status1").attr('checked', 'checked');
+                    }else{
+                        $("#status2").attr('checked', 'checked');
+                    }
                 })
                 .catch(function (error) {
                     console.log(error)
@@ -331,10 +337,10 @@
                 e.preventDefault();
 
                 name = $('[name=name]').val()
-                active = $('[name=active]:checked').val()
+                status = $('[name=status]:checked').val()
                 axios.post('http://localhost:3000/category/update/'+id, {
                     name: name,
-                    active: active
+                    status: status
                 })
                     .then(function (response) {
                         console.log(response)
@@ -352,10 +358,10 @@
                 e.preventDefault();
 
                 name = $('[name=name]').val()
-                active = $('[name=active]:checked').val()
+                status = $('[name=status]:checked').val()
                 axios.post('http://localhost:3000/category/add', {
                     name: name,
-                    active: active
+                    status: status
                 })
                     .then(function (response) {
                         console.log(response)
