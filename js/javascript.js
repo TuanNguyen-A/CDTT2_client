@@ -35,17 +35,19 @@ $("[name~=form-register]").submit(function (e) {
     phone = $('[name=phone]').val()
     password = $('[name=password]').val()
     address = $('[name=address]').val()
+    role = "user"
 
     axios.post('http://localhost:3000/auth/signUp', {
         fullName: fullName,
         email: email,
         phoneNumber: phone,
         password: password,
-        address: address
+        address: address,
+        role: role
     }, {
         headers: {
             'Content-Type': 'application/json'
-        }
+        } 
     })
         .then(function (response) {
             console.log(response);
@@ -81,3 +83,15 @@ $("[name~=form-login]").submit(function (e) {
         });
 })
 
+/*========================================Number ===========================================  */
+$('.btn-num-product-down').on('click', function() {
+    var numProduct = Number($(this).next().val());
+    if (numProduct > 1) {
+        $(this).next().val(numProduct - 1);
+    }
+});
+
+$('.btn-num-product-up').on('click', function() {
+    var numProduct = Number($(this).prev().val());
+    $(this).prev().val(numProduct + 1);
+});

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thanh toán</title>
+    <script src="https://kit.fontawesome.com/54f0cb7e4a.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/Trangchu.css">
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <a href=" ">JEWELRY</a>
+        </div>
+        <div class="menu">
+            <ul>
+                <li><a href="">NHẪN</a></li>
+                <li><a href="">VÒNG TAY</a></li>
+                <li><a href="">DÂY CHUYỀN</a></li>
+                <li><a href="">ĐỒNG HỒ</a></li>
+                <li><a href="">BÔNG TAI</a></li>
+            </ul>
+        </div>
+        <div class="others">
+            <ul>
+                <li><input type="text" placeholder="Search">
+                    <i class="fas fa-search"></i>
+                </li>
+                <li>
+                    <a href="../../login.html" class="fas fa-user-edit"></a>
+                </li>
+                <li>
+                    <a href="../../cart_detail.html" style="display: flex;">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="badge badge-warning cart">2</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </header>
+    <div class="container">
+        <div class="row" style="margin-bottom:100px;margin-top: 60px;">
+            <div class="col-md-12 col-sm-12 col-lg-8">
+                <div class="row">
+                    <h3>Thông tin nhận hàng</h3>
+                    <hr>
+                </div>
+                <div class="row">
+                    <form method="POST" action="" style="width:90%">
+                        <input type="number" name="user_id" value="" class="d-none">
+                        <input type="number" name="price_product" value="" class="d-none">
+                        <input type="number" name="price_all" value="" id="price_all" class="d-none">
+
+                        <div class="form-group form-group_start">
+                            <label for="fullname">Họ tên</label>
+                            <input type="text" class="form-control" id="fullname" name="fullname" value="Nguyễn Thị Như Phượng" placeholder="Enter fullname" required>
+                        </div>
+                        <div class="form-group form-group_start">
+                            <label for="email">Email </label>
+                            <input type="email" class="form-control" id="email" name="email" value="nguyenthinhuphuong242@gmail.com" placeholder="Enter email" required>
+                        </div>
+                        <div class="form-group form-group_start">
+                            <label for="">Số điện thoại</label>
+                            <input type="tel" class="form-control" id="phone" name="phone" value="0707583174" placeholder="Enter phone number" required>
+                        </div>
+
+                        <div class="form-group form-group_start">
+                            <label>Tỉnh(thành phố)</label>
+                            <select class="form-control form-control-lg col-sm-12 col-md-12 col-lg-6" id="province" name="province_id" required>
+                                    <option>choose province</option>
+                                   
+                                    <option value="">Bình Định</option>
+                                    <option value="">Hà Tĩnh</option>
+                                    <option value="">TP HCM</option>
+                                </select>
+                        </div>
+                        <div class="form-group form-group_start">
+                            <label>Huyện (quận)</label>
+                            <select class="form-control form-control-lg col-sm-12 col-md-12 col-lg-6" id="district" name="district_id" required>
+                                    <option>choose district</option>
+                                </select>
+                        </div>
+                        <div class="form-group form-group_start">
+                            <label>Xã (phường)</label>
+                            <select class="form-control form-control-lg col-sm-12 col-md-12 col-lg-6" id="ward" name="ward_id" required>
+                                    <option>choose ward</option>
+                                </select>
+                        </div>
+                        <div class="form-group form-group_start">
+                            <label for="address">Địa chỉ (xóm 2, Thuận Hiệp)</label>
+                            <input type="text" class="form-control" id="address" name="address" value="Xóm 2, Thuận Hiệp" placeholder="Enter address" required>
+                        </div>
+                        <div class="form-group form-group_start">
+                            <label for="note">Ghi chú</label>
+                            <textarea type="text" class="form-control" id="note" name="note" placeholder="Enter note" rows="4"></textarea>
+                        </div>
+                </div>
+            </div>
+            <div class="col-md-12 col-sm-12 col-lg-4">
+                <div class="row">
+                    <h4>Đơn hàng</h4>
+                </div>
+                <div class="row">
+                    <table class="table">
+                        <tbody>
+
+                            <tr>
+                                <td>
+                                    <img src="../../img/gbdd00w001250-bong-tai-kim-tien-kim-cuong-vang-trang-14k-pnj-01.png" alt="IMG_PRODUCT" style="width:80px;height:80px">
+                                </td>
+                                <td>
+                                    <div class="row">
+                                        Bông tai kim cương
+                                    </div>
+                                    <div class="row">
+                                        <p>SL: </p>
+                                        <p style="font-weight: bold;"> 2</p>
+                                    </div>
+                                </td>
+                                <td>
+
+                                    <div class="row " style="justify-content: right;">
+                                        <h6 style="margin-top:10px;">149.000 <u> đ</u></h6>
+                                    </div>
+
+                                </td>
+
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <div class="row"> Tạm tính:</div>
+                                    <div class="row"> Giảm giá:</div>
+                                </td>
+                                <td> </td>
+                                <td>
+                                    <div class="row" id="total_1" data-total="" style="justify-content: right;">149.000<u> đ</u></div>
+                                    <div class="row" id="discount" style="justify-content: right;">-200.000<u> đ</u></div>
+                                </td>
+                            </tr>
+                            <tr>
+
+                                <td colspan="3">
+                                    <div class="row">
+                                        <div class="form-group col-9">
+                                            <input type="text" class="form-control" id="code_discount" name="discount_code" placeholder="Nhập mã giảm giá">
+                                        </div>
+                                        <div class="btn btn-primary form-group col-3 pointer">Sử dụng</div>
+                                    </div>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="row">Phí vận chuyển:</div>
+                                </td>
+                                <td></td>
+                                <td>
+                                    <div class="row" style="justify-content: right;">30.000<u> đ</u></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="row">Thành Tiền:</div>
+                                    <div class="row">(Đã bao gồm VAT)</div>
+                                </td>
+                                <td></td>
+                                <td>
+                                    <div class="row" id="total_2" style="justify-content: right;">179.000 <u> đ</u></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="3">
+                                    <button type="submit" class="btn" style=" background-color: orangered;width: 100%;color:white;">Đặt hàng</button>
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    <footer class="hipp">
+        <div class="upper-footer">
+            <ul>
+                <b>Địa chỉ:</b>
+                <li> <a href="https://www.google.com/maps/place/TT.+Nghi+Xu%C3%A2n,+Nghi+Xu%C3%A2n,+H%C3%A0+T%C4%A9nh,+Vi%E1%BB%87t+Nam/@18.6646514,105.7543351,16z/data=!3m1!4b1!4m5!3m4!1s0x3139cd2282cf1483:0x4f978238018deadc!8m2!3d18.6642304!4d105.7556564">CS1: Nghi Xuân - Hà Tĩnh</a></li>
+                <li><a href="https://www.google.com/maps/place/T%C3%A2y+S%C6%A1n,+B%C3%ACnh+%C4%90%E1%BB%8Bnh,+Vi%E1%BB%87t+Nam/@13.947235,108.7469456,11z/data=!3m1!4b1!4m5!3m4!1s0x316f219e8f9e8b27:0x78abafbfba05394e!8m2!3d13.9479428!4d108.8551484">CS2: Tây Sơn - Bình Định</a></li>
+                <li><a href="https://www.google.com/maps/place/G%C3%B2+V%E1%BA%A5p,+Th%C3%A0nh+ph%E1%BB%91+H%E1%BB%93+Ch%C3%AD+Minh,+Vi%E1%BB%87t+Nam/@10.8354056,106.6489834,14z/data=!3m1!4b1!4m5!3m4!1s0x317529078b51e6eb:0x28bd5bd9f01a1edc!8m2!3d10.8386779!4d106.6652904">CS3: Quận Gò Vấp - Thành phố Hồ Chí Minh</a></li>
+            </ul>
+        </div>
+        <div class="upper-footer">
+            <a href="tel://65652326565"><b>Hotline : 65652326565</a>
+        </div>
+        <div class="upper-footer">
+            <ul>
+                <b>Chủ sở hữu</b> :
+                <li><a href="https://www.facebook.com/myy.bling.bling">Nguyễn Thị Trà My</a></li>
+                <li><a href="https://www.facebook.com/nguyennhuphuong.242">Nguyễn Thị Như Phượng</a></li>
+                <li><a href="https://www.facebook.com/profile.php?id=100034708790293">Nguyễn Anh Tuấn</a></li>
+            </ul>
+        </div>
+
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+
+</html>

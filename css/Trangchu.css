@@ -1,0 +1,136 @@
+html{
+    height: 100vh;
+}
+body{
+    min-height: 100vh;
+}
+a:hover{
+    text-decoration: none;
+    color: black;
+}
+
+.row-fluid {
+    width: 100%;
+    padding: 40px;
+}
+.text{
+    font-family:'Courier New', Courier, monospace;
+    font-size: 20px;
+    font-weight: bolder;
+}
+.link{
+    font-size: 15px;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    padding-top: 6px;
+}
+.box{
+    border-radius: 10px;
+    overflow: hidden;
+    width: 270px;
+    height: 400px;
+    margin: 25px;
+    border: 2px solid #c0bbbb;
+}
+.slide-img{
+    height: 300px;
+    position: relative;
+}
+.slide-img img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    box-sizing: border-box;
+}
+.detail-box{
+    width: 100%;
+    /* display: flex; */
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    box-sizing: border-box;
+}
+.price {
+    color: #c41146 !important;
+    text-align: center;
+    font-weight: 600;
+    font-size: 1.1rem;
+    letter-spacing: 0.5px;
+}
+.type{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+.type a{
+    color: #222222;
+    margin: 5px 0px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    padding-right: 8px;
+}
+.type span{
+    color:rgba(26,26,26,0.5 green, blue, alpha);
+}
+.lSPrev, .lSNext{
+    background-color: black;
+    border-radius: 50%;
+}
+
+.lSAction > .lSPrev {
+    background-position: 0px -2px !important;
+}
+
+.lSAction > .lSNext {
+    background-position: -36px -2px !important;
+    right: 28px !important;
+}
+
+.lSAction > a {
+    width: 28px !important;
+    height: 28px !important;
+}
+.group{
+    display: flex;
+}
+img.img_banner {
+    box-shadow: 2px 2px 30px rgb(0 0 0 / 20%);
+    border-radius: 10px;
+    overflow: hidden;
+}
+.ty-slider{
+    position: relative;
+    width: 700px;
+}
+.title-h2 {
+
+    position: relative;
+    border-bottom: 1px solid #e0e0e0;
+    margin-bottom: 15px;
+    display: block;
+    color: #212529;
+    transition: 0.3s linear;
+}
+.title-h2 h2 {
+    font-size: 22px;
+    position: relative;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding-bottom: 1px;
+    display: inline-block;
+}
+span.see-all {
+    font-size: 14px;
+    color: #333;
+    text-decoration: none;
+    transition: .3s linear;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding-right: 10px;
+}
+.upper-footer {
+    padding-top: 20px;
+}
+footer.hipp {
+    border-top: 1px solid #e0e0e0;
+}

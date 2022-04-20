@@ -114,7 +114,7 @@
                 <div id="discount" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="../discount/add.html">Thêm mã giảm giá</a>
-                        <a class="collapse-item" href="../discount/index.htnl">Danh sách mã giảm giá</a>
+                        <a class="collapse-item" href="../discount/index.html">Danh sách mã giảm giá</a>
                     </div>
                 </div>
             </li>
@@ -173,10 +173,10 @@
                     <form
                         class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
+                            <input id="search-input" type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
                                 aria-label="Search" aria-describedby="basic-addon2">
                             <div class="input-group-append">
-                                <button class="btn btn-primary" type="button">
+                                <button id="search-btn" class="btn btn-primary" type="button">
                                     <i class="fas fa-search fa-sm"></i>
                                 </button>
                             </div>
@@ -272,6 +272,13 @@
             </div>
             <!-- End of Main Content -->
 
+            <!-- Pagination -->
+            <nav class="mx-auto" aria-label="Page navigation example">
+                <ul id="pagination" class="pagination">
+                  
+                </ul>
+              </nav>
+
             <!-- Footer -->
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
@@ -293,6 +300,7 @@
         <i class="fas fa-angle-up"></i>
     </a>
 
+    
 
     <!-- Bootstrap core JavaScript-->
     <script src="../../../vendor/jquery/jquery.min.js"></script>
@@ -311,41 +319,76 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 
+    <!-- Utility -->
+    <script src="../../../js/utility.js"></script>
+
     <script>
-        axios.get('http://localhost:3000/category/list')
-            .then(function (res) {
-                console.log(res.data.categories)
-                const categories = res.data.categories;
-                categories.forEach((cate, i) => {
-                    createdAt = new Date(cate.createdAt)
-                    createdDate = createdAt.getDay() + "/" + createdAt.getMonth() + "/" + createdAt.getFullYear()
-                    updatedAt = new Date(cate.updatedAt)
-                    updatedDate = updatedAt.getDay() + "/" + updatedAt.getMonth() + "/" + updatedAt.getFullYear()
-                    
-                    $("#categories").append(`
-                        <tr>
-                            <th scope="row">${i + 1}</th>
-                            <td>${cate.name}</td>
-                            <td>
-                                <span class="badge badge-${cate.status == 1 ? "success" : "danger"} badge-pill">
-                                    ${cate.status == 1 ? "active" : "stop"}
-                                </span>
-                            </td>
-                            <td>${createdDate}</td>
-                            <td>${updatedDate}</td>
-                            <td>
-                                <button class="btn btn-warning btn-sm" onclick="updateCategory('${cate._id}')"><i
-                                        class="fas fa-fw fa-edit" ></i></button>
-                                <button class="btn btn-danger btn-sm" onclick="deleteCategory('${cate._id}')"><i
-                                        class="fas fa-fw fa-trash-alt"></i></i></button>
-                            </td>
-                        </tr>
-                    `)
+        search = getUrlParameter('search')
+        page = getUrlParameter('page')
+        if(!page) page = 1;
+        num = 5
+
+        if(search){
+            axios.get('http://localhost:3000/category/search/'+search)
+                .then(function(res){
+                    console.log(res.data.categories)
+                    const categories = res.data.categories;
+                    printList(categories)
+                })
+                .catch(function(error){
+                    console.log(error)
+                })
+        }else{
+            axios.get('http://localhost:3000/category/list')
+                .then(function (res) {
+                    console.log(res.data.categories)
+                    const categories = res.data.categories;
+                    printList(categories)
+                })
+                .catch(function (error) {
+                    console.log(error)
                 });
-            })
-            .catch(function (error) {
-                console.log(error)
-            });
+        }
+
+
+        function printList(categories){
+            categories.forEach((cate, i) => {
+                    if(i >= (page - 1) * num && i< page*num){
+
+                        createdAt = new Date(cate.createdAt)
+                        month = createdAt.getMonth()+1
+                        createdDate = createdAt.getDate() + "/" + month + "/" + createdAt.getFullYear()
+                        
+                        updatedAt = new Date(cate.updatedAt)
+                        month = updatedAt.getMonth()+1
+                        updatedDate = updatedAt.getDate() + "/" + month + "/" + updatedAt.getFullYear()
+                        
+                        $("#categories").append(`
+                            <tr>
+                                <th scope="row">${i + 1}</th>
+                                <td>${cate.name}</td>
+                                <td>
+                                    <span class="badge badge-${cate.status == 1 ? "success" : "danger"} badge-pill">
+                                        ${cate.status == 1 ? "active" : "stop"}
+                                    </span>
+                                </td>
+                                <td>${createdDate}</td>
+                                <td>${updatedDate}</td>
+                                <td>
+                                    <button class="btn btn-warning btn-sm" onclick="updateCategory('${cate._id}')"><i
+                                            class="fas fa-fw fa-edit" ></i></button>
+                                    <button class="btn btn-danger btn-sm" onclick="deleteCategory('${cate._id}')"><i
+                                            class="fas fa-fw fa-trash-alt"></i></i></button>
+                                </td>
+                            </tr>
+                        `)
+
+                    }
+                });
+
+                // PAGINATION
+                pagination(num, page, categories.length,search)
+        }
 
         function updateCategory(id) {
             console.log("Update")
@@ -363,8 +406,14 @@
                 .catch(function (error) {
                     console.log(error)
                 })
-
         }
+
+        $('#search-btn').on('click', function(){
+            console.log("Click")
+            search = $('#search-input').val()
+            window.location.href= "/view/admin/category/index.html?search="+search;
+        })
+        
     </script>
 </body>
 

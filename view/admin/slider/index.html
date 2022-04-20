@@ -173,10 +173,10 @@
                     <form
                         class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
+                            <input id="search-input" type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
                                 aria-label="Search" aria-describedby="basic-addon2">
                             <div class="input-group-append">
-                                <button class="btn btn-primary" type="button">
+                                <button id="search-btn" class="btn btn-primary" type="button">
                                     <i class="fas fa-search fa-sm"></i>
                                 </button>
                             </div>
@@ -294,6 +294,13 @@
             </div>
             <!-- End of Main Content -->
 
+            <!-- Pagination -->
+            <nav class="mx-auto" aria-label="Page navigation example">
+                <ul id="pagination" class="pagination">
+                  
+                </ul>
+              </nav>
+
             <!-- Footer -->
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
@@ -332,46 +339,82 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 
-    <script>
-        axios.get('http://localhost:3000/slider/list')
-            .then(function (res) {
-                console.log(res.data.sliders)
-                const sliders = res.data.sliders;
-                sliders.forEach((slider, i) => {
-                    createdAt = new Date(slider.createdAt)
-                    createdDate = createdAt.getDay() + "/" + createdAt.getMonth() + "/" + createdAt.getFullYear()
-                    updatedAt = new Date(slider.updatedAt)
-                    updatedDate = updatedAt.getDay() + "/" + updatedAt.getMonth() + "/" + updatedAt.getFullYear()
+    <!-- Utility -->
+    <script src="../../../js/utility.js"></script>
 
-                    $("#sliders").append(`
-                        <tr>
-                                        <td>${i + 1}</td>
-                                        <td>${slider.name}</td>
-                                        <td>
-                                            <img src="${slider.image}"
-                                                alt="ảnh slider" style="width:180px;height:100px;">
-                                        </td>
-                                        <td>${slider.content}</td>
-                                        <td>
-                                            <span class="badge bg-${slider.status == 1 ? "success" : "danger"}">
-                                                ${slider.status == 1 ? "active" : "stop"}
-                                            </span>
-                                        </td>
-                                        <td>${createdDate}</td>
-                                        <td>${updatedDate}</td>
-                                        <td>
-                                            <button class="btn btn-warning btn-sm" onclick="updateSlider('${slider._id}')"><i
-                                                    class="fas fa-fw fa-edit" ></i></button>
-                                            <button class="btn btn-danger btn-sm" onclick="deleteSlider('${slider._id}')"><i
-                                                    class="fas fa-fw fa-trash-alt"></i></i></button>
-                                        </td>
-                                    </tr>
-                    `)
+    <script>
+        search = getUrlParameter('search')
+        page = getUrlParameter('page')
+        if(!page) page = 1;
+        num = 5
+
+        if(search){
+            axios.get('http://localhost:3000/slider/search/'+search)
+                .then(function (res) {
+                    console.log(res.data.sliders)
+                    const sliders = res.data.sliders;
+                    printList(sliders)
+    
+                })
+                .catch(function (error) {
+                    console.log(error)
                 });
-            })
-            .catch(function (error) {
-                console.log(error)
-            });
+        }else{
+            axios.get('http://localhost:3000/slider/list')
+                .then(function (res) {
+                    console.log(res.data.sliders)
+                    const sliders = res.data.sliders;
+                    printList(sliders)
+    
+                })
+                .catch(function (error) {
+                    console.log(error)
+                });
+        }
+
+        function printList(sliders){
+            sliders.forEach((slider, i) => {
+                    if (i >= (page - 1) * num && i < page * num) {
+
+                        createdAt = new Date(slider.createdAt)
+                        month = createdAt.getMonth()+1
+                        createdDate = createdAt.getDate() + "/" + month + "/" + createdAt.getFullYear()
+                        
+                        updatedAt = new Date(slider.updatedAt)
+                        month = updatedAt.getMonth()+1
+                        updatedDate = updatedAt.getDate() + "/" + month + "/" + updatedAt.getFullYear()
+    
+                        $("#sliders").append(`
+                            <tr>
+                                <td>${i + 1}</td>
+                                <td>${slider.name}</td>
+                                <td>
+                                    <img src="${slider.image}"
+                                        alt="ảnh slider" style="width:180px;height:100px;">
+                                </td>
+                                <td>${slider.content}</td>
+                                <td>
+                                    <span class="badge bg-${slider.status == 1 ? "success" : "danger"}">
+                                        ${slider.status == 1 ? "active" : "stop"}
+                                    </span>
+                                </td>
+                                <td>${createdDate}</td>
+                                <td>${updatedDate}</td>
+                                <td>
+                                    <button class="btn btn-warning btn-sm" onclick="updateSlider('${slider._id}')"><i
+                                            class="fas fa-fw fa-edit" ></i></button>
+                                    <button class="btn btn-danger btn-sm" onclick="deleteSlider('${slider._id}')"><i
+                                            class="fas fa-fw fa-trash-alt"></i></i></button>
+                                </td>
+                            </tr>
+                        `)
+
+                    }
+                });
+
+                // PAGINATION
+                pagination(num, page, sliders.length, search)
+        }
 
         function updateSlider(id) {
             console.log("Update")
@@ -389,8 +432,13 @@
                 .catch(function (error) {
                     console.log(error)
                 })
-
         }
+
+        $('#search-btn').on('click', function(){
+            console.log("Click")
+            search = $('#search-input').val()
+            window.location.href= "/view/admin/slider/index.html?search="+search;
+        })
     </script>
 </body>
 

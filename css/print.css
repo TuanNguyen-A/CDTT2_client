@@ -17,3 +17,8 @@
 #confirmation_order {
     display: none !important;
 }
+
+a.disabled {
+    pointer-events: none;
+    cursor: default;
+}

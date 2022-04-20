@@ -131,6 +131,29 @@ header {
     text-transform: uppercase;
 }
 
+.badge {
+    display: inline-block;
+    padding: .25em .4em;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25rem;
+}
+
+.badge-warning {
+    color: #212529;
+    background-color: #ffc107;
+}
+
+.cart {
+    position: relative;
+    bottom: 10px;
+    right: 4px
+}
+
 .message-1 {
     text-align: center;
     margin: 15px 0px;
@@ -140,6 +163,10 @@ header {
 .form-group {
     text-align: center;
     margin: 15px 0px;
+}
+
+.form-group_start {
+    text-align: start !important;
 }
 
 .form-control {

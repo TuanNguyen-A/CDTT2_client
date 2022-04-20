@@ -16,7 +16,9 @@
     <link rel="icon" type="image/png" href="../../../img/logo_title.png" />
     <!-- Custom fonts for this template -->
     <link href="../../../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="../../../css/sb-admin-2.css" rel="stylesheet">
@@ -46,7 +48,8 @@
             <hr class="sidebar-divider my-0">
 
             <li class="nav-item  active">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#category" aria-expanded="true" aria-controls="collapseUtilities">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#category"
+                    aria-expanded="true" aria-controls="collapseUtilities">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Danh mục</span>
                 </a>
@@ -60,7 +63,8 @@
                 </div>
             </li>
             <li class="nav-item  active">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#product" aria-expanded="true" aria-controls="collapseUtilities">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#product"
+                    aria-expanded="true" aria-controls="collapseUtilities">
                     <i class="fas fa-fw fa-store"></i>
                     <span>Sản phẩm</span>
                 </a>
@@ -75,7 +79,8 @@
             </li>
 
             <li class="nav-item active">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#order" aria-expanded="true" aria-controls="collapsePages">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#order" aria-expanded="true"
+                    aria-controls="collapsePages">
                     <i class="fas fa-fw fa-file"></i>
                     <span>Đơn hàng</span>
                 </a>
@@ -88,7 +93,8 @@
 
 
             <li class="nav-item active">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#user" aria-expanded="true" aria-controls="collapsePages">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#user" aria-expanded="true"
+                    aria-controls="collapsePages">
                     <i class="fas fa-fw fa-user"></i>
                     <span>Tài khoản</span>
                 </a>
@@ -100,7 +106,8 @@
                 </div>
             </li>
             <li class="nav-item active">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#discount" aria-expanded="true" aria-controls="collapsePages">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#discount"
+                    aria-expanded="true" aria-controls="collapsePages">
                     <i class="fas fa-fw fa-award"></i>
                     <span>Mã giảm giá</span>
                 </a>
@@ -112,7 +119,8 @@
                 </div>
             </li>
             <li class="nav-item active">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#slider" aria-expanded="true" aria-controls="collapsePages">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#slider" aria-expanded="true"
+                    aria-controls="collapsePages">
                     <i class="fas fa-fw fa-images"></i>
                     <span>Slider</span>
                 </a>
@@ -162,9 +170,11 @@
                     </form>
 
                     <!-- Topbar Search -->
-                    <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                    <form
+                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
+                                aria-label="Search" aria-describedby="basic-addon2">
                             <div class="input-group-append">
                                 <button class="btn btn-primary" type="button">
                                     <i class="fas fa-search fa-sm"></i>
@@ -178,16 +188,20 @@
 
                         <!-- Nav Item - Search Dropdown (Visible Only XS) -->
                         <li class="nav-item dropdown no-arrow d-sm-none">
-                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-search fa-fw"></i>
                             </a>
                             <!-- Dropdown - Messages -->
-                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
+                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
+                                aria-labelledby="searchDropdown">
                                 <form class="form-inline mr-auto w-100 navbar-search">
                                     <div class="input-group">
-                                        <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                                        <input id="search-input" type="text"
+                                            class="form-control bg-light border-0 small" placeholder="Search for..."
+                                            aria-label="Search" aria-describedby="basic-addon2">
                                         <div class="input-group-append">
-                                            <button class="btn btn-primary" type="button">
+                                            <button id="search-btn" class="btn btn-primary" type="button">
                                                 <i class="fas fa-search fa-sm"></i>
                                             </button>
                                         </div>
@@ -198,12 +212,14 @@
 
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Nguyễn Như Phượng</span>
                                 <img class="img-profile rounded-circle" src="../../../img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="userDropdown">
                                 <a class="dropdown-item" href="#">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Tài khoản của tôi
                                 </a>
@@ -237,9 +253,8 @@
                                 <thead class="thead-light">
                                     <tr>
                                         <th scope="col">STT</th>
-                                        <th scope="col">Mã sản phẩm</th>
                                         <th scope="col">Tên sản phẩm</th>
-                                        <th scope="col">Mã danh mục</th>
+                                        <th scope="col">danh mục</th>
                                         <th scope="col">Hình ảnh</th>
                                         <th scope="col">Giá gốc</th>
                                         <th scope="col">Giá sale</th>
@@ -251,303 +266,9 @@
                                     </tr>
                                 </thead>
 
-                                <tbody class="page_table">
+                                <tbody id="products" class="page_table">
 
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>VT015</td>
-                                        <td>Vòng Tay dây chéo</td>
-                                        <td>VT</td>
-                                        <td><img src="https://thachanhgiare.com/wp-content/uploads/2019/08/vong-da-thach-anh-toc-den-3.jpg" alt="ảnh" style="width:80px;height:80px"></td>
-                                        <td>299.000 <u>đ</u></td>
-                                        <td>249.000 <u>đ</u></td>
-                                        <td>20</td>
 
-                                        <td>
-                                            <span class="badge badge-success badge-pill">active</span>
-                                            <span class="badge badge-danger badge-pill">stop</span>
-                                        </td>
-                                        <td>27/03/2021</td>
-                                        <td>27/03/2021</td>
-                                        <td>
-                                            <button class="btn btn-warning btn-sm"><i class="fas fa-fw fa-edit"></i></button>
-                                            <button class="btn btn-danger btn-sm"><i class="fas fa-fw fa-trash-alt"></i></i></button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>VT015</td>
-                                        <td>Vòng Tay dây chéo</td>
-                                        <td>VT</td>
-                                        <td><img src="https://thachanhgiare.com/wp-content/uploads/2019/08/vong-da-thach-anh-toc-den-3.jpg" alt="ảnh" style="width:80px;height:80px"></td>
-                                        <td>299.000 <u>đ</u></td>
-                                        <td>249.000 <u>đ</u></td>
-                                        <td>20</td>
-
-                                        <td>
-                                            <span class="badge badge-success badge-pill">active</span>
-                                            <span class="badge badge-danger badge-pill">stop</span>
-                                        </td>
-                                        <td>27/03/2021</td>
-                                        <td>27/03/2021</td>
-                                        <td>
-                                            <button class="btn btn-warning btn-sm"><i class="fas fa-fw fa-edit"></i></button>
-                                            <button class="btn btn-danger btn-sm"><i class="fas fa-fw fa-trash-alt"></i></i></button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>VT015</td>
-                                        <td>Vòng Tay dây chéo</td>
-                                        <td>VT</td>
-                                        <td><img src="https://thachanhgiare.com/wp-content/uploads/2019/08/vong-da-thach-anh-toc-den-3.jpg" alt="ảnh" style="width:80px;height:80px"></td>
-                                        <td>299.000 <u>đ</u></td>
-                                        <td>249.000 <u>đ</u></td>
-                                        <td>20</td>
-
-                                        <td>
-                                            <span class="badge badge-success badge-pill">active</span>
-                                            <span class="badge badge-danger badge-pill">stop</span>
-                                        </td>
-                                        <td>27/03/2021</td>
-                                        <td>27/03/2021</td>
-                                        <td>
-                                            <button class="btn btn-warning btn-sm"><i class="fas fa-fw fa-edit"></i></button>
-                                            <button class="btn btn-danger btn-sm"><i class="fas fa-fw fa-trash-alt"></i></i></button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>VT015</td>
-                                        <td>Vòng Tay dây chéo</td>
-                                        <td>VT</td>
-                                        <td><img src="https://thachanhgiare.com/wp-content/uploads/2019/08/vong-da-thach-anh-toc-den-3.jpg" alt="ảnh" style="width:80px;height:80px"></td>
-                                        <td>299.000 <u>đ</u></td>
-                                        <td>249.000 <u>đ</u></td>
-                                        <td>20</td>
-
-                                        <td>
-                                            <span class="badge badge-success badge-pill">active</span>
-                                            <span class="badge badge-danger badge-pill">stop</span>
-                                        </td>
-                                        <td>27/03/2021</td>
-                                        <td>27/03/2021</td>
-                                        <td>
-                                            <button class="btn btn-warning btn-sm"><i class="fas fa-fw fa-edit"></i></button>
-                                            <button class="btn btn-danger btn-sm"><i class="fas fa-fw fa-trash-alt"></i></i></button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>VT015</td>
-                                        <td>Vòng Tay dây chéo</td>
-                                        <td>VT</td>
-                                        <td><img src="https://thachanhgiare.com/wp-content/uploads/2019/08/vong-da-thach-anh-toc-den-3.jpg" alt="ảnh" style="width:80px;height:80px"></td>
-                                        <td>299.000 <u>đ</u></td>
-                                        <td>249.000 <u>đ</u></td>
-                                        <td>20</td>
-
-                                        <td>
-                                            <span class="badge badge-success badge-pill">active</span>
-                                            <span class="badge badge-danger badge-pill">stop</span>
-                                        </td>
-                                        <td>27/03/2021</td>
-                                        <td>27/03/2021</td>
-                                        <td>
-                                            <button class="btn btn-warning btn-sm"><i class="fas fa-fw fa-edit"></i></button>
-                                            <button class="btn btn-danger btn-sm"><i class="fas fa-fw fa-trash-alt"></i></i></button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>VT015</td>
-                                        <td>Vòng Tay dây chéo</td>
-                                        <td>VT</td>
-                                        <td><img src="https://thachanhgiare.com/wp-content/uploads/2019/08/vong-da-thach-anh-toc-den-3.jpg" alt="ảnh" style="width:80px;height:80px"></td>
-                                        <td>299.000 <u>đ</u></td>
-                                        <td>249.000 <u>đ</u></td>
-                                        <td>20</td>
-
-                                        <td>
-                                            <span class="badge badge-success badge-pill">active</span>
-                                            <span class="badge badge-danger badge-pill">stop</span>
-                                        </td>
-                                        <td>27/03/2021</td>
-                                        <td>27/03/2021</td>
-                                        <td>
-                                            <button class="btn btn-warning btn-sm"><i class="fas fa-fw fa-edit"></i></button>
-                                            <button class="btn btn-danger btn-sm"><i class="fas fa-fw fa-trash-alt"></i></i></button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>VT015</td>
-                                        <td>Vòng Tay dây chéo</td>
-                                        <td>VT</td>
-                                        <td><img src="https://thachanhgiare.com/wp-content/uploads/2019/08/vong-da-thach-anh-toc-den-3.jpg" alt="ảnh" style="width:80px;height:80px"></td>
-                                        <td>299.000 <u>đ</u></td>
-                                        <td>249.000 <u>đ</u></td>
-                                        <td>20</td>
-
-                                        <td>
-                                            <span class="badge badge-success badge-pill">active</span>
-                                            <span class="badge badge-danger badge-pill">stop</span>
-                                        </td>
-                                        <td>27/03/2021</td>
-                                        <td>27/03/2021</td>
-                                        <td>
-                                            <button class="btn btn-warning btn-sm"><i class="fas fa-fw fa-edit"></i></button>
-                                            <button class="btn btn-danger btn-sm"><i class="fas fa-fw fa-trash-alt"></i></i></button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>VT015</td>
-                                        <td>Vòng Tay dây chéo</td>
-                                        <td>VT</td>
-                                        <td><img src="https://thachanhgiare.com/wp-content/uploads/2019/08/vong-da-thach-anh-toc-den-3.jpg" alt="ảnh" style="width:80px;height:80px"></td>
-                                        <td>299.000 <u>đ</u></td>
-                                        <td>249.000 <u>đ</u></td>
-                                        <td>20</td>
-
-                                        <td>
-                                            <span class="badge badge-success badge-pill">active</span>
-                                            <span class="badge badge-danger badge-pill">stop</span>
-                                        </td>
-                                        <td>27/03/2021</td>
-                                        <td>27/03/2021</td>
-                                        <td>
-                                            <button class="btn btn-warning btn-sm"><i class="fas fa-fw fa-edit"></i></button>
-                                            <button class="btn btn-danger btn-sm"><i class="fas fa-fw fa-trash-alt"></i></i></button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>VT015</td>
-                                        <td>Vòng Tay dây chéo</td>
-                                        <td>VT</td>
-                                        <td><img src="https://thachanhgiare.com/wp-content/uploads/2019/08/vong-da-thach-anh-toc-den-3.jpg" alt="ảnh" style="width:80px;height:80px"></td>
-                                        <td>299.000 <u>đ</u></td>
-                                        <td>249.000 <u>đ</u></td>
-                                        <td>20</td>
-
-                                        <td>
-                                            <span class="badge badge-success badge-pill">active</span>
-                                            <span class="badge badge-danger badge-pill">stop</span>
-                                        </td>
-                                        <td>27/03/2021</td>
-                                        <td>27/03/2021</td>
-                                        <td>
-                                            <button class="btn btn-warning btn-sm"><i class="fas fa-fw fa-edit"></i></button>
-                                            <button class="btn btn-danger btn-sm"><i class="fas fa-fw fa-trash-alt"></i></i></button>
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <th scope="row">2</th>
-                                        <td>DC152</td>
-                                        <td>Dây chuyền mặt kim cương</td>
-                                        <td>DC</td>
-                                        <td><img src="https://th.bing.com/th/id/R.14a02e3c4b738225800604c21b1a5957?rik=DuXxzJ1sMSbK8A&pid=ImgRaw&r=0" alt="ảnh" style="width:80px;height:80px"></td>
-                                        <td>499.000 <u>đ</u></td>
-                                        <td>349.000 <u>đ</u></td>
-                                        <td>20</td>
-
-                                        <td>
-                                            <span class="badge badge-success badge-pill">active</span>
-                                            <span class="badge badge-danger badge-pill">stop</span>
-                                        </td>
-                                        <td>27/03/2021</td>
-                                        <td>27/03/2021</td>
-                                        <td>
-                                            <button class="btn btn-warning btn-sm"><i class="fas fa-fw fa-edit"></i></button>
-                                            <button class="btn btn-danger btn-sm"><i class="fas fa-fw fa-trash-alt"></i></i></button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">3</th>
-                                        <td>BT852</td>
-                                        <td>Bông tai nút cài</td>
-                                        <td>VT</td>
-                                        <td><img src="https://inoxcongsang.com/wp-content/uploads/2018/07/bt088f-bong-tai-inox-nu-dep-gia-re.jpg" alt="ảnh" style="width:80px;height:80px"></td>
-                                        <td>299.000 <u>đ</u></td>
-                                        <td></td>
-                                        <td>20</td>
-
-                                        <td>
-                                            <span class="badge badge-success badge-pill">active</span>
-                                            <span class="badge badge-danger badge-pill">stop</span>
-                                        </td>
-                                        <td>27/03/2021</td>
-                                        <td>27/03/2021</td>
-                                        <td>
-                                            <button class="btn btn-warning btn-sm"><i class="fas fa-fw fa-edit"></i></button>
-                                            <button class="btn btn-danger btn-sm"><i class="fas fa-fw fa-trash-alt"></i></i></button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">4</th>
-                                        <td>NHAN015</td>
-                                        <td>Nhẫn trái tym</td>
-                                        <td>NH</td>
-                                        <td><img src="https://tnj.vn/img/cms/nhan-nu-bac/NN0250/nhan-bac-nu-mat-trai-tim-dinh-da-dep-NN0250-9.jpg" alt="ảnh" style="width:80px;height:80px"></td>
-                                        <td>499.000 <u>đ</u></td>
-                                        <td></td>
-                                        <td>20</td>
-
-                                        <td>
-                                            <span class="badge badge-success badge-pill">active</span>
-                                            <span class="badge badge-danger badge-pill">stop</span>
-                                        </td>
-                                        <td>27/03/2021</td>
-                                        <td>27/03/2021</td>
-                                        <td>
-                                            <button class="btn btn-warning btn-sm"><i class="fas fa-fw fa-edit"></i></button>
-                                            <button class="btn btn-danger btn-sm"><i class="fas fa-fw fa-trash-alt"></i></i></button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">5</th>
-                                        <td>VT715</td>
-                                        <td>Vòng Tay dây cài</td>
-                                        <td>VT</td>
-                                        <td><img src="https://th.bing.com/th/id/OIP.sBYsX0KfLMmEss4WFoKc4wHaHa?pid=ImgDet&w=2160&h=2160&rs=1" alt="ảnh" style="width:80px;height:80px"></td>
-                                        <td>299.000 <u>đ</u></td>
-                                        <td>249.000 <u>đ</u></td>
-                                        <td>20</td>
-
-                                        <td>
-                                            <span class="badge badge-success badge-pill">active</span>
-                                            <span class="badge badge-danger badge-pill">stop</span>
-                                        </td>
-                                        <td>27/03/2021</td>
-                                        <td>27/03/2021</td>
-                                        <td>
-                                            <button class="btn btn-warning btn-sm"><i class="fas fa-fw fa-edit"></i></button>
-                                            <button class="btn btn-danger btn-sm"><i class="fas fa-fw fa-trash-alt"></i></i></button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">6</th>
-                                        <td>VT741</td>
-                                        <td>Vòng Tay hạt lựu</td>
-                                        <td>VT</td>
-                                        <td><img src="https://i.pinimg.com/originals/0c/e5/2b/0ce52b649058d94e3c03e09b291e1299.jpg" alt="ảnh" style="width:80px;height:80px"></td>
-                                        <td>299.000 <u>đ</u></td>
-                                        <td>249.000 <u>đ</u></td>
-                                        <td>20</td>
-
-                                        <td>
-                                            <span class="badge badge-success badge-pill">active</span>
-                                            <span class="badge badge-danger badge-pill">stop</span>
-                                        </td>
-                                        <td>27/03/2021</td>
-                                        <td>27/03/2021</td>
-                                        <td>
-                                            <button class="btn btn-warning btn-sm"><i class="fas fa-fw fa-edit"></i></button>
-                                            <button class="btn btn-danger btn-sm"><i class="fas fa-fw fa-trash-alt"></i></i></button>
-                                        </td>
-                                    </tr>
                                 </tbody>
                             </table>
 
@@ -561,6 +282,13 @@
 
 
             <!-- End of Main Content -->
+
+            <!-- Pagination -->
+            <nav class="mx-auto" aria-label="Page navigation example">
+                <ul id="pagination" class="pagination">
+
+                </ul>
+            </nav>
 
             <!-- Footer -->
             <footer class="sticky-footer bg-white">
@@ -595,6 +323,124 @@
 
     <!-- Page level custom scripts -->
     <script src="../../../js/demo/datatables-demo.js"></script>
+
+    <!-- Axios -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+
+    <!-- Utility -->
+    <script src="../../../js/utility.js"></script>
+
+    <script>
+        search = getUrlParameter('search')
+        page = getUrlParameter('page')
+        if (!page) page = 1;
+        num = 5
+
+        if(search){
+            axios.get('http://localhost:3000/product/search/'+search)
+                .then(function (res) {
+                    console.log(res.data.products)
+                    const products = res.data.products;
+                    printList(products)
+                })
+                .catch(function (error) {
+                    console.log(error)
+                });
+        }else{
+            axios.get('http://localhost:3000/product/list')
+                .then(function (res) {
+                    console.log(res.data.products)
+                    const products = res.data.products;
+                    printList(products)
+                })
+                .catch(function (error) {
+                    console.log(error)
+                });
+        }
+
+        function printList(products) {
+            products.forEach(async (product, i) => {
+                if (i >= (page - 1) * num && i < page * num) {
+
+                    createdAt = new Date(product.createdAt)
+                    month = createdAt.getMonth() + 1
+                    createdDate = createdAt.getDate() + "/" + month + "/" + createdAt.getFullYear()
+
+                    updatedAt = new Date(product.updatedAt)
+                    month = updatedAt.getMonth() + 1
+                    updatedDate = updatedAt.getDate() + "/" + month + "/" + updatedAt.getFullYear()
+
+                    cateName = ''
+
+                    console.log(createdAt.getDate())
+                    await axios.get('http://localhost:3000/category/' + product.category_id)
+                        .then(function (res) {
+                            console.log(res)
+                            const cate = res.data.category[0]
+                            cateName = cate.name
+
+                        })
+                        .catch(function (error) {
+                            console.log(error)
+                        })
+                    console.log(cateName)
+                    $("#products").append(`
+                            <tr>
+                                <th scope="row">${i + 1}</th>
+                                <td>${product.name}</td>
+                                <td>${cateName}</td>
+                                <td><img src="${product.image}"
+                                        alt="ảnh" style="width:80px;height:80px"></td>
+                                <td>${product.price} <u>đ</u></td>
+                                <td>${product.price_sale}<u>đ</u></td>
+                                <td>${product.num}</td>
+    
+                                <td>
+                                    <span class="badge badge-${product.status == 1 ? "success" : "danger"} badge-pill">
+                                        ${product.status == 1 ? "active" : "stop"}
+                                    </span>
+                                </td>
+                                <td>${createdDate}</td>
+                                <td>${updatedDate}</td>
+                                <td>
+                                    <button class="btn btn-warning btn-sm" onclick="updateProduct('${product._id}')"><i
+                                            class="fas fa-fw fa-edit" ></i></button>
+                                    <button class="btn btn-danger btn-sm" onclick="deleteProduct('${product._id}')"><i
+                                            class="fas fa-fw fa-trash-alt"></i></i></button>
+                                </td>
+                            </tr>
+                        `)
+
+                }
+            });
+
+            // PAGINATION
+            pagination(num, page, products.length, search)
+        }
+
+        function updateProduct(id) {
+            console.log("Update")
+            window.location.href = "/view/admin/product/add.html?id=" + id;
+        }
+
+        function deleteProduct(id) {
+            console.log("delete", id)
+            axios.post('http://localhost:3000/product/delete' + id)
+                .then(function (res) {
+                    location.reload()
+                })
+                .catch(function (error) {
+                    console.log(error)
+                })
+        }
+
+        $('#search-btn').on('click', function () {
+            console.log("Click")
+            search = $('#search-input').val()
+            window.location.href = "/view/admin/product/index.html?search=" + search;
+        })
+    </script>
 
 </body>
 

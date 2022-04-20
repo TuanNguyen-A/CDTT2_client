@@ -16,7 +16,9 @@
     <link rel="icon" type="image/png" href="../../../img/logo_title.png" />
     <!-- Custom fonts for this template -->
     <link href="../../../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="../../../css/sb-admin-2.css" rel="stylesheet">
@@ -46,7 +48,8 @@
             <hr class="sidebar-divider my-0">
 
             <li class="nav-item  active">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#category" aria-expanded="true" aria-controls="collapseUtilities">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#category"
+                    aria-expanded="true" aria-controls="collapseUtilities">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Danh mục</span>
                 </a>
@@ -60,7 +63,8 @@
                 </div>
             </li>
             <li class="nav-item  active">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#product" aria-expanded="true" aria-controls="collapseUtilities">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#product"
+                    aria-expanded="true" aria-controls="collapseUtilities">
                     <i class="fas fa-fw fa-store"></i>
                     <span>Sản phẩm</span>
                 </a>
@@ -75,7 +79,8 @@
             </li>
 
             <li class="nav-item active">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#order" aria-expanded="true" aria-controls="collapsePages">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#order" aria-expanded="true"
+                    aria-controls="collapsePages">
                     <i class="fas fa-fw fa-file"></i>
                     <span>Đơn hàng</span>
                 </a>
@@ -88,7 +93,8 @@
 
 
             <li class="nav-item active">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#user" aria-expanded="true" aria-controls="collapsePages">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#user" aria-expanded="true"
+                    aria-controls="collapsePages">
                     <i class="fas fa-fw fa-user"></i>
                     <span>Tài khoản</span>
                 </a>
@@ -100,7 +106,8 @@
                 </div>
             </li>
             <li class="nav-item active">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#discount" aria-expanded="true" aria-controls="collapsePages">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#discount"
+                    aria-expanded="true" aria-controls="collapsePages">
                     <i class="fas fa-fw fa-award"></i>
                     <span>Mã giảm giá</span>
                 </a>
@@ -112,7 +119,8 @@
                 </div>
             </li>
             <li class="nav-item active">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#slider" aria-expanded="true" aria-controls="collapsePages">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#slider" aria-expanded="true"
+                    aria-controls="collapsePages">
                     <i class="fas fa-fw fa-images"></i>
                     <span>Slider</span>
                 </a>
@@ -162,9 +170,11 @@
                     </form>
 
                     <!-- Topbar Search -->
-                    <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                    <form
+                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
+                                aria-label="Search" aria-describedby="basic-addon2">
                             <div class="input-group-append">
                                 <button class="btn btn-primary" type="button">
                                     <i class="fas fa-search fa-sm"></i>
@@ -178,16 +188,20 @@
 
                         <!-- Nav Item - Search Dropdown (Visible Only XS) -->
                         <li class="nav-item dropdown no-arrow d-sm-none">
-                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-search fa-fw"></i>
                             </a>
                             <!-- Dropdown - Messages -->
-                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
+                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
+                                aria-labelledby="searchDropdown">
                                 <form class="form-inline mr-auto w-100 navbar-search">
                                     <div class="input-group">
-                                        <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                                        <input id="search-input" type="text"
+                                            class="form-control bg-light border-0 small" placeholder="Search for..."
+                                            aria-label="Search" aria-describedby="basic-addon2">
                                         <div class="input-group-append">
-                                            <button class="btn btn-primary" type="button">
+                                            <button id="search-input" class="btn btn-primary" type="button">
                                                 <i class="fas fa-search fa-sm"></i>
                                             </button>
                                         </div>
@@ -198,12 +212,14 @@
 
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Nguyễn Như Phượng</span>
                                 <img class="img-profile rounded-circle" src="../../../img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="userDropdown">
                                 <a class="dropdown-item" href="#">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Tài khoản của tôi
                                 </a>
@@ -227,11 +243,11 @@
                     <div class="row">
 
                         <div class="w-100 ">
-                            <p>Mã đơn hàng: ĐH27032022</p>
-                            <p>Tên người nhận: Nguyễn Thị Như Phượng</p>
-                            <p>Email: nguyenthinhuphuong242@gmail.com </p>
-                            <p>Số điện thoại: 0707583174</p>
-                            <p>Địa chỉ giao hàng: Xóm 2 Thuận Hiệp, Bình Thuận, Tây Sơn, Bình Định</p>
+                            <p id="order_id">Mã đơn hàng: </p>
+                            <p id="customer_name">Tên người nhận: </p>
+                            <p id="customer_email">Email: </p>
+                            <p id="customer_phone">Số điện thoại: </p>
+                            <p id="customer_address">Địa chỉ giao hàng: </p>
                             <p>Thông tin sản phẩm:</p>
                             <table class="table table-bordered">
                                 <thead class="thead-ligth">
@@ -243,7 +259,7 @@
                                         <th scope="col">Đơn giá</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody id="product_list">
 
                                     <tr>
                                         <th scope="col">1</th>
@@ -273,37 +289,34 @@
                                 <tbody>
                                     <tr>
                                         <td>Tổng tiền sản phẩm: </td>
-                                        <td class="float-right"> 2.999.000 VND</td>
+                                        <td id="order_totalPrice" class="float-right"> </td>
                                     </tr>
 
                                     <tr>
                                         <td>Mã giảm giá: </td>
-                                        <td class="float-right"> -100.000 VND </td>
+                                        <td id="order_discount" class="float-right"> </td>
                                     </tr>
 
-
-                                    <tr>
-                                        <td>Phí vận chuyển: </td>
-                                        <td class="float-right"> 30.000 VND</td>
-                                    </tr>
                                     <tr>
                                         <td>
                                             <strong> Tổng tiền thanh toán: </strong>
                                         </td>
-                                        <td class="float-right"> 3.129.0000 VND</td>
+                                        <td id="order_totalDiscountPrice" class="float-right"> </td>
                                     </tr>
                                 </tbody>
                             </table>
 
-                            <p>Ngày đặt hàng: 27/03/2022</p>
-                            <div class="row col-12">
+                            <p id="order_date">Ngày đặt hàng: </p>
+                            <div id="confirm_btn_container" class="row col-12">
 
-                                <button id="confirmation_order" class="btn btn-sm btn-success" onclick="">Xác nhận đơn hàng</button>
+
                             </div>
 
-                            <div class="row col-12" style="justify-content:space-between;margin-top:20px;padding-bottom:20px">
-                                <a id="back_order" href="./listorder.html">Quay lại</a>
-                                <button id="print_order" class="btn btn-sm btn-primary" onclick="window.print()">In đơn hàng</button>
+                            <div class="row col-12"
+                                style="justify-content:space-between;margin-top:20px;padding-bottom:20px">
+                                <a id="back_order" href="./index.html">Quay lại</a>
+                                <button id="print_order" class="btn btn-sm btn-primary" onclick="">In đơn
+                                    hàng</button>
                             </div>
                         </div>
 
@@ -345,6 +358,75 @@
         <!-- Page level custom scripts -->
         <script src="../../../js/demo/datatables-demo.js"></script>
 
+        <!-- Axios -->
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+
+        <!-- Utility -->
+        <script src="../../../js/utility.js"></script>
+
+        <script>
+            const id = getUrlParameter('id')
+            axios.get('http://localhost:3000/order/' + id)
+                .then(async function (res) {
+                    const order = res.data.order[0]
+                    console.log(order)
+
+                    // Get customer
+                    let user;
+                    await axios.get('http://localhost:3000/user/' + order.customerId)
+                        .then(function (res) {
+                            user = res.data.user[0]
+                            console.log(user)
+                        })
+                        .catch(function (error) {
+                            console.log(error)
+                        })
+
+                    $("#order_id").append(order.id)
+                    $("#customer_name").append(user.fullName)
+                    $("#customer_email").append(user.email)
+                    $("#customer_phone").append(user.phoneNumber)
+                    $("#customer_address").append(user.address)
+                    $("#order_discount").append("-" + order.discount + "VND")
+                    $("#order_totalDiscountPrice").append(order.totalPrice + "VND")
+
+                    createdAt = new Date(order.createdAt)
+                    month = createdAt.getMonth() + 1
+                    createdDate = createdAt.getDate() + "/" + month + "/" + createdAt.getFullYear()
+                    $("#order_date").append(createdDate)
+
+                    $("#confirm_btn_container").append(`
+                        <button id="confirmation_order" onclick="updateOrder()" class="btn btn-sm btn-${order.status == 0 ? 'success' : 'danger'}">
+                            ${order.status == 0 ? 'Xác nhận đơn hàng' : 'Hủy xác nhận'}
+                        </button>
+                    `)
+
+                })
+                .catch(function (error) {
+                    console.log(error)
+                })
+
+            // UPDATE CATEGORY
+            function updateOrder() {
+                console.log("Confirm", id)
+                axios.post('http://localhost:3000/order/confirm/' + id)
+                    .then(function (response) {
+                        console.log(response)
+                        window.location.href = "/view/admin/order/index.html";
+                    })
+                    .catch(function (error) {
+                        alert(error.response.data.message)
+                        console.log(error.response.data.message)
+                    });
+            }
+
+            $('#search-btn').on('click', function () {
+                console.log("Click")
+                search = $('#search-input').val()
+                window.location.href = "/view/admin/order/index.html?search=" + search;
+            })
+        </script>
 </body>
 
 </html>
