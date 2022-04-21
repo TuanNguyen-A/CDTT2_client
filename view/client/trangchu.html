@@ -89,7 +89,8 @@
                     <span class="see-all">Xem tất cả</span>
                 </a>
             </div>
-            <ul id="new_product-list" class="lightSlider">
+            
+            <ul id="new_product-list" class="lightSlider"><!-- lightSlider -->
                 <!-- <li class="item-a">
                     <div class="box">
                         <div class="slide-img">
@@ -118,8 +119,7 @@
                 </a>
             </div>
             <div class="banner-add">
-                <a id="gold-banner-a" href=""><img id="gold-banner-img" src="../../img/trang-suc-vang-24k.jpg"
-                        style="width:100%"></a>
+                <a id="gold-banner-a" href=""><img id="gold-banner-img" src="" style="width:100%"></a>
             </div>
             <div class="btn-slide-index">
                 <ul id="gold_product-list" class="lightSlider">
@@ -291,89 +291,82 @@
 
 
     <script>
-        printList()
-
-        async function printList(){
-            //GOLD PRODUCT LIST
-            searchCategory = 'Vàng'
-            cateogry_id = ''
-            await axios.get('http://localhost:3000/product/search_by_category/' + searchCategory)
-                .then(function (res) {
-                    const goldproducts = res.data.products;
-                    console.log(goldproducts)
-    
-                    for (i = 0; i < goldproducts.length; i++) {
-                        goldproduct = goldproducts[i]
-                        console.log(goldproduct)
-                        $('#gold_product-list').append(`
-                            <li class="item-a">
-                                <div class="box">
-                                    <div class="slide-img">
-                                        <img src="${goldproduct.image}" alt="1">
-                                    </div>
-                                    <div class="detail-box">
-                                        <div class="type">
-                                            <a href="#">${goldproduct.name}</a>
-                                            <span>New item</span>
+        //  NEW PRODUCT LIST
+        axios.get('http://localhost:3000/product/list')
+            .then(function (res) {
+                const products = res.data.products;
+                for (j = products.length; j > products.length - 5; j--) {
+                    product = products[j - 1]
+                    $('#new_product-list').append(`
+                                <li class="item-a">
+                                    <div class="box">
+                                        <div class="slide-img">
+                                            <img src="${product.image}" alt="1">
                                         </div>
-                                        <div href="#" class="price">${goldproduct.price} đ</div>
-                                    </div>
-                                </div>
-                            </li>
-                        `)
-                    }
-    
-    
-                })
-                .catch(function (error) {
-                    console.log(error)
-                });
-    
-            //  NEW PRODUCT LIST
-            await axios.get('http://localhost:3000/product/list')
-                .then(function (res) {
-                    const products = res.data.products;
-                    for (j = products.length; j > products.length - 5; j--) {
-                        product = products[j - 1]
-                        $('#new_product-list').append(`
-                            <li class="item-a">
-                                <div class="box">
-                                    <div class="slide-img">
-                                        <img src="${product.image}" alt="1">
-                                    </div>
-                                    <div class="detail-box">
-                                        <div class="type">
-                                            <a href="#">${product.name}</a>
-                                            <span>New item</span>
+                                        <div class="detail-box">
+                                            <div class="type">
+                                                <a href="#">${product.name}</a>
+                                                <span>New item</span>
+                                            </div>
+                                            <div href="#" class="price">${product.price} đ</div>
                                         </div>
-                                        <div href="#" class="price">${product.price} đ</div>
                                     </div>
-                                </div>
-                            </li>
-                        `)
-                    }
-                })
-                .catch(function (error) {
-                    console.log(error)
-                });
-    
-            // GOLD BANNER
-            searchSlider = 'Vàng Banner'
-            await axios.get('http://localhost:3000/slider/search/' + searchSlider)
-                .then(function (res) {
-                    const slider = res.data.sliders[0];
-    
-                    $('#gold-banner-img').attr('src', slider.image)
-                    $('#gold-banner-a').attr('href', slider.url)
-                })
-                .catch(function (error) {
-                    console.log(error)
-                });
+                                </li>
+                            `)
+                }
+            })
+            .catch(function (error) {
+                console.log(error)
+            });
 
-        }
+        //GOLD PRODUCT LIST
+        searchCategory = 'Vàng'
+        cateogry_id = ''
+        axios.get('http://localhost:3000/product/search_by_category/' + searchCategory)
+            .then(function (res) {
+                const goldproducts = res.data.products;
+                console.log(goldproducts)
+
+                for (i = 0; i < goldproducts.length; i++) {
+                    goldproduct = goldproducts[i]
+                    console.log(goldproduct)
+                    $('#gold_product-list').append(`
+                                <li class="item-a">
+                                    <div class="box">
+                                        <div class="slide-img">
+                                            <img src="${goldproduct.image}" alt="1">
+                                        </div>
+                                        <div class="detail-box">
+                                            <div class="type">
+                                                <a href="#">${goldproduct.name}</a>
+                                                <span>New item</span>
+                                            </div>
+                                            <div href="#" class="price">${goldproduct.price} đ</div>
+                                        </div>
+                                    </div>
+                                </li>
+                            `)
+                }
 
 
-        
+            })
+            .catch(function (error) {
+                console.log(error)
+            });
+
+        // GOLD BANNER
+        searchSlider = 'Vàng Banner'
+        axios.get('http://localhost:3000/slider/search/' + searchSlider)
+            .then(function (res) {
+                const slider = res.data.sliders[0];
+
+                $('#gold-banner-img').attr('src', slider.image)
+                $('#gold-banner-a').attr('href', slider.url)
+            })
+            .catch(function (error) {
+                console.log(error)
+            });
+
     </script>
 </body>
 

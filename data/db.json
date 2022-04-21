@@ -1,0 +1,25 @@
+{
+    "product": [
+        {
+            "id": 1,
+            "title": "Dây chuyền 1",
+            "content": "Đây là dây chuyền",
+            "status": 1,
+            "image": "https://datvangbac.com/wp-content/uploads/2020/10/mat-day-chuyen-nam-1-min.jpg"
+        },
+        {
+            "id": 2,
+            "title": "Dây chuyền 2",
+            "content": "Đây là dây chuyền",
+            "status": 2,
+            "image": "https://datvangbac.com/wp-content/uploads/2020/10/mat-day-chuyen-nam-1-min.jpg"
+        },
+        {
+            "id": 3,
+            "title": "Dây chuyền 2",
+            "content": "Đây là dây chuyền",
+            "status": 3,
+            "image": "https://datvangbac.com/wp-content/uploads/2020/10/mat-day-chuyen-nam-1-min.jpg"
+        }
+    ]
+}
