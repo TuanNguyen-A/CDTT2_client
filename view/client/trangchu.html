@@ -25,11 +25,11 @@
         </div>
         <div class="menu">
             <ul>
-                <li><a href="">NHẪN</a></li>
-                <li><a href="">VÒNG TAY</a></li>
-                <li><a href="">DÂY CHUYỀN</a></li>
-                <li><a href="">ĐỒNG HỒ</a></li>
-                <li><a href="">BÔNG TAI</a></li>
+                <li><a href="./category.html?cate=Nhẫn">NHẪN</a></li>
+                <li><a href="./category.html?cate=Vòng Tay">VÒNG TAY</a></li>
+                <li><a href="./category.html?cate=Dây Chuyền">DÂY CHUYỀN</a></li>
+                <li><a href="./category.html?cate=Đồng Hồ">ĐỒNG HỒ</a></li>
+                <li><a href="./category.html?cate=Bông Tai">BÔNG TAI</a></li>
             </ul>
         </div>
         <div class="others">
@@ -84,13 +84,14 @@
 
         <div class="row-fluid">
             <div class="title-h2">
-                <a href="">
+                <a href="./category.html">
                     <h2>Sản phẩm mới</h2>
                     <span class="see-all">Xem tất cả</span>
                 </a>
             </div>
-            
-            <ul id="new_product-list" class="lightSlider"><!-- lightSlider -->
+
+            <ul id="new_product-list" class="">
+                <!-- lightSlider -->
                 <!-- <li class="item-a">
                     <div class="box">
                         <div class="slide-img">
@@ -113,7 +114,7 @@
 
         <div class="row-fluid">
             <div class="title-h2">
-                <a href="">
+                <a href="./category.html?cate=Vàng">
                     <h2>Trang sức vàng 24K</h2>
                     <span class="see-all">Xem tất cả</span>
                 </a>
@@ -122,7 +123,7 @@
                 <a id="gold-banner-a" href=""><img id="gold-banner-img" src="" style="width:100%"></a>
             </div>
             <div class="btn-slide-index">
-                <ul id="gold_product-list" class="lightSlider">
+                <ul id="gold_product-list" class="">
                     <!-- <li class="item-a">
                         <div class="box">
                             <div class="slide-img">
@@ -145,79 +146,20 @@
 
         <div class="row-fluid">
             <div class="title-h2">
-                <a href="">
+                <a href="./category.html?cate=Kim Cương">
                     <h2>Trang sức kim cương</h2>
                     <span class="see-all">Xem tất cả</span>
                 </a>
             </div>
             <div class="banner-add">
-                <a href=""><img src="../../img/trang-suc-kim-cuong.jpg" style="width:100%"></a>
+                <a id="diamond-banner-a" href=""><img id="diamond-banner-img" src="" style="width:100%"></a>
             </div>
             <div class="btn-slide-index">
-                <ul class="lightSlider">
+                <ul id="diamond_product-list" class="">
                     <li class="item-a">
                         <div class="box">
                             <div class="slide-img">
                                 <img src="../../img/gl0000w000386-lac-tay-vang-trang-y-18k-pnj-01.png" alt="1">
-                            </div>
-                            <div class="detail-box">
-                                <div class="type">
-                                    <a href="#">Lắc tay vàng trắng Ý 18K</a>
-                                    <span>New item</span>
-                                </div>
-                                <div href="#" class="price">13.500.000 đ</div>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="item-a">
-                        <div class="box">
-                            <div class="slide-img">
-                                <img src="../../img/gbdd00w001250-bong-tai-kim-tien-kim-cuong-vang-trang-14k-pnj-01.png"
-                                    alt="2">
-                            </div>
-                            <div class="detail-box">
-                                <div class="type">
-                                    <a href="#">Bông tai kim cương 14K</a>
-                                    <span>New item</span>
-                                </div>
-                                <div href="#" class="price">13.000.000 đ</div>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="item-a">
-                        <div class="box">
-                            <div class="slide-img">
-                                <img src="../../img/gbxmxmy004120-bong-tai-vang-18k-dinh-da-cz-pnj.png" alt="3">
-                            </div>
-                            <div class="detail-box">
-                                <div class="type">
-                                    <a href="#">Bông tai vàng 18K đính đá</a>
-                                    <span>New item</span>
-                                </div>
-                                <div href="#" class="price">11.350.000 đ</div>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="item-a">
-                        <div class="box">
-                            <div class="slide-img">
-                                <img src="../../img/gmztmxy000021-mat-day-chuyen-vang-10k-dinh-da-ecz-swarovski-style-by-pnj.png"
-                                    alt="3">
-                            </div>
-                            <div class="detail-box">
-                                <div class="type">
-                                    <a href="#">Lắc tay vàng trắng Ý 18K</a>
-                                    <span>New item</span>
-                                </div>
-                                <div href="#" class="price">13.500.000 đ</div>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="item-a">
-                        <div class="box">
-                            <div class="slide-img">
-                                <img src="../../img/gnddddw005569-nhan-kim-cuong-vang-trang-14k-disneypnj-cinderella-01.png"
-                                    alt="1">
                             </div>
                             <div class="detail-box">
                                 <div class="type">
@@ -274,7 +216,131 @@
     </footer>
     <script type="text/javascript">
         $(document).ready(function () {
+
+            //  NEW PRODUCT LIST
+            axios.get('http://localhost:3000/product/list')
+                .then(function (res) {
+                    const products = res.data.products;
+                    for (j = products.length; j > products.length - 5; j--) {
+                        product = products[j - 1]
+                        $('#new_product-list').append(`
+                                <li class="item-a">
+                                    <div class="box">
+                                        <div class="slide-img">
+                                            <img src="${product.image}" alt="1">
+                                        </div>
+                                        <div class="detail-box">
+                                            <div class="type">
+                                                <a href="#">${product.name}</a>
+                                                <span>New item</span>
+                                            </div>
+                                            <div href="#" class="price">${product.price} đ</div>
+                                        </div>
+                                    </div>
+                                </li>
+                            `)
+                    }
+                })
+                .catch(function (error) {
+                    console.log(error)
+                });
+
+            //GOLD PRODUCT LIST
+            searchCategory = 'Vàng'
+            cateogry_id = ''
+            axios.get('http://localhost:3000/product/search_by_category/' + searchCategory)
+                .then(function (res) {
+                    const goldproducts = res.data.products;
+
+                    for (i = 0; i < goldproducts.length; i++) {
+                        goldproduct = goldproducts[i]
+                        $('#gold_product-list').append(`
+                                <li class="item-a">
+                                    <div class="box">
+                                        <div class="slide-img">
+                                            <img src="${goldproduct.image}" alt="1">
+                                        </div>
+                                        <div class="detail-box">
+                                            <div class="type">
+                                                <a href="#">${goldproduct.name}</a>
+                                                <span>New item</span>
+                                            </div>
+                                            <div href="#" class="price">${goldproduct.price} đ</div>
+                                        </div>
+                                    </div>
+                                </li>
+                            `)
+                    }
+
+
+                })
+                .catch(function (error) {
+                    console.log(error)
+                });
+
+            // GOLD BANNER
+            searchSlider = 'Vàng Banner'
+            axios.get('http://localhost:3000/slider/search/' + searchSlider)
+                .then(function (res) {
+                    const slider = res.data.sliders[0];
+
+                    $('#gold-banner-img').attr('src', slider.image)
+                    $('#gold-banner-a').attr('href', slider.url)
+                })
+                .catch(function (error) {
+                    console.log(error)
+                });
+
+            //DIAMON PRODUCT LIST
+            searchCategory = 'Kim Cương'
+            cateogry_id = ''
+            axios.get('http://localhost:3000/product/search_by_category/' + searchCategory)
+                .then(function (res) {
+                    const products = res.data.products;
+                    console.log("Diamond", products)
+
+                    for (i = 0; i < products.length; i++) {
+                        product = products[i]
+                        $('#diamond_product-list').append(`
+                                <li class="item-a">
+                                    <div class="box">
+                                        <div class="slide-img">
+                                            <img src="${product.image}" alt="1">
+                                        </div>
+                                        <div class="detail-box">
+                                            <div class="type">
+                                                <a href="#">${product.name}</a>
+                                                <span>New item</span>
+                                            </div>
+                                            <div href="#" class="price">${product.price} đ</div>
+                                        </div>
+                                    </div>
+                                </li>
+                            `)
+                    }
+
+
+                })
+                .catch(function (error) {
+                    console.log(error)
+                });
+
+            // GOLD BANNER
+            searchSlider = 'Kim Cương Banner'
+            axios.get('http://localhost:3000/slider/search/' + searchSlider)
+                .then(function (res) {
+                    const slider = res.data.sliders[0];
+
+                    $('#diamond-banner-img').attr('src', slider.image)
+                    $('#diamond-banner-a').attr('href', slider.url)
+                })
+                .catch(function (error) {
+                    console.log(error)
+                });
+
+            //SLIDER
             $(".lightSlider").lightSlider();
+
         });
     </script>
 
@@ -291,81 +357,7 @@
 
 
     <script>
-        //  NEW PRODUCT LIST
-        axios.get('http://localhost:3000/product/list')
-            .then(function (res) {
-                const products = res.data.products;
-                for (j = products.length; j > products.length - 5; j--) {
-                    product = products[j - 1]
-                    $('#new_product-list').append(`
-                                <li class="item-a">
-                                    <div class="box">
-                                        <div class="slide-img">
-                                            <img src="${product.image}" alt="1">
-                                        </div>
-                                        <div class="detail-box">
-                                            <div class="type">
-                                                <a href="#">${product.name}</a>
-                                                <span>New item</span>
-                                            </div>
-                                            <div href="#" class="price">${product.price} đ</div>
-                                        </div>
-                                    </div>
-                                </li>
-                            `)
-                }
-            })
-            .catch(function (error) {
-                console.log(error)
-            });
 
-        //GOLD PRODUCT LIST
-        searchCategory = 'Vàng'
-        cateogry_id = ''
-        axios.get('http://localhost:3000/product/search_by_category/' + searchCategory)
-            .then(function (res) {
-                const goldproducts = res.data.products;
-                console.log(goldproducts)
-
-                for (i = 0; i < goldproducts.length; i++) {
-                    goldproduct = goldproducts[i]
-                    console.log(goldproduct)
-                    $('#gold_product-list').append(`
-                                <li class="item-a">
-                                    <div class="box">
-                                        <div class="slide-img">
-                                            <img src="${goldproduct.image}" alt="1">
-                                        </div>
-                                        <div class="detail-box">
-                                            <div class="type">
-                                                <a href="#">${goldproduct.name}</a>
-                                                <span>New item</span>
-                                            </div>
-                                            <div href="#" class="price">${goldproduct.price} đ</div>
-                                        </div>
-                                    </div>
-                                </li>
-                            `)
-                }
-
-
-            })
-            .catch(function (error) {
-                console.log(error)
-            });
-
-        // GOLD BANNER
-        searchSlider = 'Vàng Banner'
-        axios.get('http://localhost:3000/slider/search/' + searchSlider)
-            .then(function (res) {
-                const slider = res.data.sliders[0];
-
-                $('#gold-banner-img').attr('src', slider.image)
-                $('#gold-banner-a').attr('href', slider.url)
-            })
-            .catch(function (error) {
-                console.log(error)
-            });
 
     </script>
 </body>

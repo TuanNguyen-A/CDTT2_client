@@ -333,6 +333,18 @@
 
 
     <script>
+        //Authorization
+        author = $.cookie("Authorization")
+        axios.get('http://localhost:3000/auth/secret', {headers: { Authorization: author}})
+            .then(function (res) {
+                console.log(res)
+            })
+            .catch(function (error) {
+                console.log(error)
+                window.location.href= "/view/client/login.html";
+            });
+
+            
         const id = getUrlParameter('id')
         if (id) {
             axios.get('http://localhost:3000/slider/' + id)
