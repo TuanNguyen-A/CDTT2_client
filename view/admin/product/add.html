@@ -173,8 +173,8 @@
                     <form
                         class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group">
-                            <input id="search-input" type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
-                                aria-label="Search" aria-describedby="basic-addon2">
+                            <input id="search-input" type="text" class="form-control bg-light border-0 small"
+                                placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
                             <div class="input-group-append">
                                 <button id="search-btn" class="btn btn-primary" type="button">
                                     <i class="fas fa-search fa-sm"></i>
@@ -248,24 +248,23 @@
                                     <div class="form-group col-sm-12">
                                         <label for="name">Tên sản phẩm</label>
                                         <input type="text" class="form-control" id="name" name="name"
-                                            placeholder="Nhập tên sản phẩm" required >
+                                            placeholder="Nhập tên sản phẩm" required>
                                     </div>
                                     <div class="form-group col-sm-12 col-md-6">
                                         <label for="category_id">Chọn danh mục</label>
                                         <select class="form-control" id="category_id" name="category_id">
-                                            
+
                                         </select>
                                     </div>
                                     <div class="form-group col-sm-12">
                                         <label for="content">Mô tả sản phẩm</label>
                                         <textarea name="content" class="form-control" id="content" value=""
-                                            placeholder="Nhập mô tả" cols="30" rows="10" required
-                                            ></textarea>
+                                            placeholder="Nhập mô tả" cols="30" rows="10" required></textarea>
                                     </div>
                                     <div class="form-group col-sm-12">
                                         <label for="image">Hình ảnh</label>
                                         <input type="text" name="image" class="form-control" id="image" value=""
-                                            placeholder="Nhập link ảnh" required >
+                                            placeholder="Nhập link ảnh" required>
                                         <img id="immage_form_product" style="width:200px;height:200px;margin-top:20px;"
                                             src="" alt="ảnh sản phẩm">
                                     </div>
@@ -273,7 +272,7 @@
                                         <div class="form-group col-sm-3">
                                             <label for="price">Giá gốc</label>
                                             <input type="number" name="price" class="form-control" id="price" value=""
-                                                min="0" required >
+                                                min="0" required>
                                         </div>
                                         <div class="form-group col-sm-3">
                                             <label for="price">Giá Sale (khuyến mãi)</label>
@@ -284,7 +283,7 @@
                                     <div class="form-group col-sm-3">
                                         <label for="num">Số lượng</label>
                                         <input type="number" name="num" class="form-control" id="num" value="" min="1"
-                                            required >
+                                            required>
                                     </div>
                                     <div class="form-group col-sm-12">
                                         <label>Trạng thái hoạt động</label>
@@ -360,6 +359,17 @@
     <script src="../../../js/utility.js"></script>
 
     <script>
+        //Authorization
+        author = $.cookie("Authorization")
+        axios.get('http://localhost:3000/auth/secret', { headers: { Authorization: author } })
+            .then(function (res) {
+                console.log(res)
+            })
+            .catch(function (error) {
+                console.log(error)
+                window.location.href = "/view/client/login.html";
+            });
+
 
         axios.get('http://localhost:3000/category/list')
             .then(function (res) {
@@ -386,16 +396,16 @@
                     $('[name=name]').val(product.name)
                     $('[name=content]').val(product.content)
                     $('[name=image]').val(product.image)
-                    $('#immage_form_product').attr('src',product.image)
-                    $('#immage_form_product').css('display','block')
+                    $('#immage_form_product').attr('src', product.image)
+                    $('#immage_form_product').css('display', 'block')
                     $('[name=price]').val(product.price)
                     $('[name=price_sale]').val(product.price_sale)
                     $('[name=num]').val(product.num)
                     $('[name=category_id]').val(product.category_id)
 
-                    if(product.status == 1){
+                    if (product.status == 1) {
                         $("#status1").attr('checked', 'checked');
-                    }else{
+                    } else {
                         $("#status2").attr('checked', 'checked');
                     }
                 })
@@ -416,7 +426,7 @@
                 num = $('[name=num]').val()
                 status = $('[name=status]:checked').val()
 
-                axios.post('http://localhost:3000/product/update/'+id, {
+                axios.post('http://localhost:3000/product/update/' + id, {
                     name: name,
                     category_id: category_id,
                     content: content,
@@ -449,7 +459,7 @@
                 price_sale = $('[name=price_sale]').val()
                 num = $('[name=num]').val()
                 status = $('[name=status]:checked').val()
-                
+
                 axios.post('http://localhost:3000/product/add', {
                     name: name,
                     category_id: category_id,

@@ -75,8 +75,12 @@ $("[name~=form-login]").submit(function (e) {
             console.log(response);
             console.log(response.headers.authorization)
             token = 'Bearer ' + response.headers.authorization
-            $.cookie('Authorization', token, { expires: 7 });
-            // window.location.href= "/";
+            $.cookie('Authorization', token, { expires: 7, path: '/' });
+            if(response.data.role == 'admin'){
+                window.location.href= "/view/admin";
+            }else{
+                window.location.href= "/view/client/trangchu.html";
+            }
         })
         .catch(function (error) {
             console.log(error);

@@ -173,10 +173,10 @@
                     <form
                         class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
+                            <input id="search-input" type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
                                 aria-label="Search" aria-describedby="basic-addon2">
                             <div class="input-group-append">
-                                <button class="btn btn-primary" type="button">
+                                <button id="search-btn" class="btn btn-primary" type="button">
                                     <i class="fas fa-search fa-sm"></i>
                                 </button>
                             </div>
@@ -197,11 +197,11 @@
                                 aria-labelledby="searchDropdown">
                                 <form class="form-inline mr-auto w-100 navbar-search">
                                     <div class="input-group">
-                                        <input id="search-input" type="text"
+                                        <input  type="text"
                                             class="form-control bg-light border-0 small" placeholder="Search for..."
                                             aria-label="Search" aria-describedby="basic-addon2">
                                         <div class="input-group-append">
-                                            <button id="search-btn" class="btn btn-primary" type="button">
+                                            <button  class="btn btn-primary" type="button">
                                                 <i class="fas fa-search fa-sm"></i>
                                             </button>
                                         </div>
@@ -332,6 +332,18 @@
     <script src="../../../js/utility.js"></script>
 
     <script>
+        //Authorization
+        author = $.cookie("Authorization")
+        axios.get('http://localhost:3000/auth/secret', {headers: { Authorization: author}})
+            .then(function (res) {
+                console.log(res)
+            })
+            .catch(function (error) {
+                console.log(error)
+                window.location.href= "/view/client/login.html";
+            });
+
+            
         search = getUrlParameter('search')
         page = getUrlParameter('page')
         if (!page) page = 1;
