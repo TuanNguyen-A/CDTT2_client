@@ -21,7 +21,7 @@
 <body>
     <header>
         <div class="logo">
-            <a href=" ">JEWELRY</a>
+            <a href="#">JEWELRY</a>
         </div>
         <div class="menu">
             <ul>
@@ -43,7 +43,7 @@
                 <li>
                     <a href="./cart_detail.html" style="display: flex;">
                         <i class="fas fa-shopping-cart"></i>
-                        <span class="badge badge-warning cart">2</span>
+                        <span class="badge badge-warning cart num">0</span>
                     </a>
                 </li>
             </ul>
@@ -156,7 +156,7 @@
             </div>
             <div class="btn-slide-index">
                 <ul id="diamond_product-list" class="">
-                    <li class="item-a">
+                    <!-- <li class="item-a">
                         <div class="box">
                             <div class="slide-img">
                                 <img src="../../img/gl0000w000386-lac-tay-vang-trang-y-18k-pnj-01.png" alt="1">
@@ -169,7 +169,7 @@
                                 <div href="#" class="price">13.500.000 đ</div>
                             </div>
                         </div>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
 
@@ -214,31 +214,50 @@
         </div>
 
     </footer>
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+    <!-- Axios -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+
+    <script src="../../js/utility.js"></script>
+    
     <script type="text/javascript">
+        updateCart();
         $(document).ready(function () {
 
             //  NEW PRODUCT LIST
             axios.get('http://localhost:3000/product/list')
                 .then(function (res) {
                     const products = res.data.products;
+                    console.log("New", products)
                     for (j = products.length; j > products.length - 5; j--) {
                         product = products[j - 1]
+                        if (!product.status) continue;
+                        priceFormat = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(product.price)
                         $('#new_product-list').append(`
-                                <li class="item-a">
-                                    <div class="box">
-                                        <div class="slide-img">
-                                            <img src="${product.image}" alt="1">
-                                        </div>
-                                        <div class="detail-box">
-                                            <div class="type">
-                                                <a href="#">${product.name}</a>
-                                                <span>New item</span>
-                                            </div>
-                                            <div href="#" class="price">${product.price} đ</div>
-                                        </div>
+                            <li class="item-a">
+                                <div class="box">
+                                    <div class="slide-img">
+                                        <img src="${product.image}" alt="1">
                                     </div>
-                                </li>
-                            `)
+                                    <div class="detail-box">
+                                        <div class="type">
+                                            <a href="./product_detail.html?id=${product._id}">${product.name}</a>
+                                            <span>New item</span>
+                                        </div>
+                                        <div href="#" class="price">${priceFormat} </div>
+                                    </div>
+                                </div>
+                            </li>
+                        `)
                     }
                 })
                 .catch(function (error) {
@@ -251,9 +270,12 @@
             axios.get('http://localhost:3000/product/search_by_category/' + searchCategory)
                 .then(function (res) {
                     const goldproducts = res.data.products;
+                    console.log("Gold", goldproducts)
 
                     for (i = 0; i < goldproducts.length; i++) {
                         goldproduct = goldproducts[i]
+                        if (!goldproduct.status) continue;
+                        priceFormat = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(goldproduct.price)
                         $('#gold_product-list').append(`
                                 <li class="item-a">
                                     <div class="box">
@@ -262,10 +284,10 @@
                                         </div>
                                         <div class="detail-box">
                                             <div class="type">
-                                                <a href="#">${goldproduct.name}</a>
+                                                <a href="./product_detail.html?id=${goldproduct._id}">${goldproduct.name}</a>
                                                 <span>New item</span>
                                             </div>
-                                            <div href="#" class="price">${goldproduct.price} đ</div>
+                                            <div href="#" class="price">${priceFormat} </div>
                                         </div>
                                     </div>
                                 </li>
@@ -301,6 +323,8 @@
 
                     for (i = 0; i < products.length; i++) {
                         product = products[i]
+                        if (!product.status) continue;
+                        priceFormat = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(product.price)
                         $('#diamond_product-list').append(`
                                 <li class="item-a">
                                     <div class="box">
@@ -309,10 +333,10 @@
                                         </div>
                                         <div class="detail-box">
                                             <div class="type">
-                                                <a href="#">${product.name}</a>
+                                                <a href="./product_detail.html?id=${product._id}">${product.name}</a>
                                                 <span>New item</span>
                                             </div>
-                                            <div href="#" class="price">${product.price} đ</div>
+                                            <div href="#" class="price">${priceFormat} </div>
                                         </div>
                                     </div>
                                 </li>
@@ -330,7 +354,6 @@
             axios.get('http://localhost:3000/slider/search/' + searchSlider)
                 .then(function (res) {
                     const slider = res.data.sliders[0];
-
                     $('#diamond-banner-img').attr('src', slider.image)
                     $('#diamond-banner-a').attr('href', slider.url)
                 })
@@ -344,22 +367,7 @@
         });
     </script>
 
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
 
-    <!-- Axios -->
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
-
-
-    <script>
-
-
-    </script>
 </body>
 
 </html>

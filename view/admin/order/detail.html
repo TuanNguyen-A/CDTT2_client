@@ -212,9 +212,9 @@
 
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                            <a class="nav-link dropdown-toggle" href="../user/account.html" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Nguyễn Như Phượng</span>
+                                <span id="account-name"  class="mr-2 d-none d-lg-inline text-gray-600 small">Nguyễn Như Phượng</span>
                                 <img class="img-profile rounded-circle" src="../../../img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
@@ -253,7 +253,6 @@
                                 <thead class="thead-ligth">
                                     <tr>
                                         <th scope="col">STT</th>
-                                        <th scope="col">Mã sản phẩm</th>
                                         <th scope="col">Tên sản phẩm</th>
                                         <th scope="col">Số lượng</th>
                                         <th scope="col">Đơn giá</th>
@@ -261,27 +260,12 @@
                                 </thead>
                                 <tbody id="product_list">
 
-                                    <tr>
+                                    <!-- <tr>
                                         <th scope="col">1</th>
-                                        <th scope="col">BT1458</th>
                                         <th scope="col">Bông tai nút khóa</th>
                                         <th scope="col">1</th>
                                         <th scope="col">249.000 <u>đ</u></th>
-                                    </tr>
-                                    <tr>
-                                        <th scope="col">2</th>
-                                        <th scope="col">DC02365</th>
-                                        <th scope="col">Dây chuyền trái tym</th>
-                                        <th scope="col">1</th>
-                                        <th scope="col">599.000 <u>đ</u></th>
-                                    </tr>
-                                    <tr>
-                                        <th scope="col">3</th>
-                                        <th scope="col">VT0125</th>
-                                        <th scope="col">Vòng tay chéo</th>
-                                        <th scope="col">2</th>
-                                        <th scope="col">349.000 <u>đ</u></th>
-                                    </tr>
+                                    </tr> -->
 
                                 </tbody>
                             </table>
@@ -371,6 +355,8 @@
             axios.get('http://localhost:3000/auth/secret', { headers: { Authorization: author } })
                 .then(function (res) {
                     console.log(res)
+                user = res.data.account
+                $('#account-name').text(user.fullName)
                 })
                 .catch(function (error) {
                     console.log(error)
@@ -382,26 +368,18 @@
             axios.get('http://localhost:3000/order/' + id)
                 .then(async function (res) {
                     const order = res.data.order[0]
-                    console.log(order)
+                    console.log("Order",order)
 
-                    // Get customer
-                    let user;
-                    await axios.get('http://localhost:3000/user/' + order.customerId)
-                        .then(function (res) {
-                            user = res.data.user[0]
-                            console.log(user)
-                        })
-                        .catch(function (error) {
-                            console.log(error)
-                        })
+                    discountFormat = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(order.discount)
+                    totalPriceFormat = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(order.totalPrice)
 
                     $("#order_id").append(order.id)
-                    $("#customer_name").append(user.fullName)
-                    $("#customer_email").append(user.email)
-                    $("#customer_phone").append(user.phoneNumber)
-                    $("#customer_address").append(user.address)
-                    $("#order_discount").append("-" + order.discount + "VND")
-                    $("#order_totalDiscountPrice").append(order.totalPrice + "VND")
+                    $("#customer_name").append(order.fullName)
+                    $("#customer_email").append(order.email)
+                    $("#customer_phone").append(order.phoneNumber)
+                    $("#customer_address").append(order.address)
+                    $("#order_discount").append("-" + discountFormat )
+                    $("#order_totalDiscountPrice").append(totalPriceFormat )
 
                     createdAt = new Date(order.createdAt)
                     month = createdAt.getMonth() + 1
@@ -413,6 +391,28 @@
                             ${order.status == 0 ? 'Xác nhận đơn hàng' : 'Hủy xác nhận'}
                         </button>
                     `)
+                    //console.log('Success',order)
+
+                    order.orderProducts.forEach((element, i) => {
+                        axios.get('http://localhost:3000/product/' + element.productId)
+                            .then(function (res) {
+                                console.log(res)
+                                const product = res.data.product[0]
+                                priceFormat = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(element.price)
+                                $('#product_list').append(`
+                                    <tr>
+                                        <th scope="col">${i + 1}</th>
+                                        <th scope="col">${product.name}</th>
+                                        <th scope="col">${element.quantity}</th>
+                                        <th scope="col">${priceFormat}</th>
+                                    </tr>
+                                `)
+
+                            })
+                            .catch(function (error) {
+                                console.log(error)
+                            })
+                    });
 
                 })
                 .catch(function (error) {

@@ -203,8 +203,8 @@
 
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Nguyễn Như Phượng</span>
+                            <a class="nav-link dropdown-toggle" href="../user/account.html" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span  id="account-name" class="mr-2 d-none d-lg-inline text-gray-600 small">Nguyễn Như Phượng</span>
                                 <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
@@ -366,18 +366,13 @@
     <script src="../../../js/utility.js"></script>
 
     <script>
-<<<<<<< HEAD
-        axios.get('http://localhost:3000/category/list_active')
-            .then(function(res) {
-                console.log(res.data.categoryActive)
-                const categoryActive = res.data.categoryActive;
-                categoryActive.forEach((cate, i) => {
-=======
         //Authorization
         author = $.cookie("Authorization")
         axios.get('http://localhost:3000/auth/secret', { headers: { Authorization: author } })
             .then(function (res) {
                 console.log(res)
+                user = res.data.account
+                $('#account-name').text(user.fullName)
             })
             .catch(function (error) {
                 console.log(error)
@@ -390,7 +385,6 @@
                 console.log(res.data.categories)
                 const categories = res.data.categories;
                 categories.forEach((cate, i) => {
->>>>>>> 87fa10f6f300faf5de4cbcf41b864f3273fdd979
 
                     $("#category_id").append(`
                         <option value="${cate._id}">${cate.name} </option>
@@ -442,18 +436,6 @@
                 status = $('[name=status]:checked').val()
 
                 axios.post('http://localhost:3000/product/update/' + id, {
-<<<<<<< HEAD
-                        name: name,
-                        category_id: category_id,
-                        content: content,
-                        image: image,
-                        price: price,
-                        price_sale: price_sale,
-                        num: num,
-                        status: status
-                    })
-                    .then(function(response) {
-=======
                     name: name,
                     category_id: category_id,
                     content: content,
@@ -464,7 +446,6 @@
                     status: status
                 })
                     .then(function (response) {
->>>>>>> 87fa10f6f300faf5de4cbcf41b864f3273fdd979
                         console.log(response)
                         window.location.href = "/view/admin/product/index.html";
                     })

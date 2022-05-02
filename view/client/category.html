@@ -31,10 +31,13 @@
       <ul>
         <li>
           <input id="search-input" type="text" placeholder="Search">
-          <i  id="search-btn" class="fas fa-search"></i>
+          <i id="search-btn" class="fas fa-search"></i>
         </li>
         <li><a href="" class="fas fa-user-edit"></a></li>
-        <li><a href="" class="fas fa-shopping-cart"></a></li>
+        <li><a href="./cart_detail.html" style="display: flex;">
+            <i class="fas fa-shopping-cart"></i>
+            <span class="badge badge-warning cart num">0</span>
+          </a></li>
       </ul>
     </div>
   </header>
@@ -152,6 +155,7 @@
   <script src="../../../js/utility.js"></script>
 
   <script>
+    updateCart();
     $(document).scroll(function () {
       if ($(window).scrollTop()) {
         $("header").addClass("fixed");
@@ -179,7 +183,7 @@
     } else {
       if (search) {
         axios.get('http://localhost:3000/product/search/' + search)
-        .then(function (res) {
+          .then(function (res) {
             console.log("Search", res.data.products)
             const products = res.data.products;
             printList(products)
@@ -204,20 +208,22 @@
       for (i = 0; i < products.length; i++) {
         if (i >= (page - 1) * num && i < page * num) {
           product = products[i]
+          if (!product.status) continue;
+          priceFormat = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(product.price)
           $('#product-list').append(`
               <li>
                 <div class="product-item">
                   <div class="product-top">
-                    <a href="" class="product-thumb">
+                    <a href="./product_detail.html?id=${product._id}" class="product-thumb">
                       <img src="${product.image}" alt="">
                     </a>
                   </div>
                   <div class="product-info">
                     <div class="type">
-                      <a href="#">${product.name}</a>
+                      <a href="./product_detail.html?id=${product._id}">${product.name}</a>
                       <span>New item</span>
                     </div>
-                    <div href="#" class="price">${product.price} đ</div>
+                    <div href="#" class="price">${priceFormat} </div>
                   </div>
                 </div>
               </li>

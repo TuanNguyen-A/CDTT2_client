@@ -212,9 +212,9 @@
 
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                            <a class="nav-link dropdown-toggle" href="../user/account.html" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Nguyễn Như Phượng</span>
+                                <span id="account-name"  class="mr-2 d-none d-lg-inline text-gray-600 small">Nguyễn Như Phượng</span>
                                 <img class="img-profile rounded-circle" src="../../../img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
@@ -349,6 +349,8 @@
         axios.get('http://localhost:3000/auth/secret', {headers: { Authorization: author}})
             .then(function (res) {
                 console.log(res)
+                user = res.data.account
+                $('#account-name').text(user.fullName)
             })
             .catch(function (error) {
                 console.log(error)
@@ -393,27 +395,16 @@
                         createdAt = new Date(order.createdAt)
                         month = createdAt.getMonth() + 1
                         createdDate = createdAt.getDate() + "/" + month + "/" + createdAt.getFullYear()
-
-
-                        // Get customer
-                        let user;
-                        await axios.get('http://localhost:3000/user/' + order.customerId)
-                            .then(function (res) {
-                                user = res.data.user[0]
-                            })
-                            .catch(function (error) {
-                                console.log(error)
-                            })
-
+                        totalPriceFormat = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(order.totalPrice)
 
                         $("#orders").append(`
                             <tr>
                                 <td>${i + 1}</td>
                                 <td><a href="./detail.html?id=${order._id}">${order.id}</a></td>
-                                <td>${user.fullName}</td>
-                                <td>${user.phoneNumber}</td>
-                                <td>${order.totalPrice}<u>đ</u></td>
-                                <td>${user.address}</td>
+                                <td>${order.fullName}</td>
+                                <td>${order.phoneNumber}</td>
+                                <td>${totalPriceFormat}</td>
+                                <td>${order.address}</td>
                                 <td>${createdDate}</td>
                                 <td>
                                     <span>${order.status == 1 ? "Đã xác nhận" : "Chưa xác nhận"}</span>

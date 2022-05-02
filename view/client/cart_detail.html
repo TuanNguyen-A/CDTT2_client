@@ -8,7 +8,8 @@
     <title>Giỏ hàng</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <script src="https://kit.fontawesome.com/54f0cb7e4a.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="stylesheet" href="../../css/main.css">
@@ -22,7 +23,7 @@
 <body>
     <header>
         <div class="logo">
-            <a href=" ">JEWELRY</a>
+            <a href="./trangchu.html">JEWELRY</a>
         </div>
         <div class="menu">
             <ul>
@@ -44,7 +45,7 @@
                 <li>
                     <a href="../../cart_detail.html" style="display: flex;">
                         <i class="fas fa-shopping-cart"></i>
-                        <span class="badge badge-warning cart">2</span>
+                        <span class="badge badge-warning cart num">0</span>
                     </a>
                 </li>
             </ul>
@@ -57,7 +58,7 @@
                     <div class="col-lg-10 col-xl-7 m-lr-auto m-b-50" style="z-index: 2;">
                         <div class="m-l-25 m-r--38 m-lr-0-xl">
                             <div class="wrap-table-shopping-cart">
-                                <table class="table-shopping-cart">
+                                <table id="cart-list" class="table-shopping-cart">
                                     <tr class="table_head">
                                         <th class="column-1">sản phẩm</th>
                                         <th class="column-2"></th>
@@ -65,10 +66,11 @@
                                         <th class="column-4">Số lượng</th>
                                         <th class="column-5">Thành tiền</th>
                                     </tr>
-                                    <tr class="table_row">
+                                    <!-- <tr class="table_row">
                                         <td class="column-1">
                                             <div class="how-itemcart1">
-                                                <img src="../../img/gmztmxy000021-mat-day-chuyen-vang-10k-dinh-da-ecz-swarovski-style-by-pnj.png" alt="IMG">
+                                                <img src="../../img/gmztmxy000021-mat-day-chuyen-vang-10k-dinh-da-ecz-swarovski-style-by-pnj.png"
+                                                    alt="IMG">
                                             </div>
                                         </td>
                                         <td class="column-2">
@@ -84,10 +86,13 @@
                                         <td class="column-3">
 
                                             <div class="row " style="justify-content: right;">
-                                                <h6 style="margin-top:10px;margin-right:40px;font-weight:bold;">149.000 <u>đ</u></h6>
+                                                <h6 style="margin-top:10px;margin-right:40px;font-weight:bold;">149.000
+                                                    <u>đ</u>
+                                                </h6>
                                             </div>
                                             <div class="row" style="justify-content: right;">
-                                                <h6 style="margin-top:10px;margin-right:40px;"><del>199.000 <u>đ</u></del></h6>
+                                                <h6 style="margin-top:10px;margin-right:40px;"><del>199.000
+                                                        <u>đ</u></del></h6>
                                             </div>
 
                                         </td>
@@ -97,7 +102,8 @@
                                                     <i class=" fs-16 fas fa-minus"></i>
                                                 </div>
 
-                                                <input class="mtext-104 cl3 txt-center num-product " type="number" name="num" value="1" min="1" required>
+                                                <input class="mtext-104 cl3 txt-center num-product " type="number"
+                                                    name="num" value="1" min="1" required>
 
                                                 <div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m ">
                                                     <i class="fs-16 fa fa-plus"></i>
@@ -105,50 +111,7 @@
                                             </div>
                                         </td>
                                         <td class="column-5">159.000 <u>đ</u></td>
-                                    </tr>
-                                    <tr class="table_row">
-                                        <td class="column-1">
-                                            <div class="how-itemcart1">
-                                                <img src="../../img/gnddddw005569-nhan-kim-cuong-vang-trang-14k-disneypnj-cinderella-01.png" alt="IMG">
-                                            </div>
-                                        </td>
-                                        <td class="column-2">
-                                            <div class="row">
-                                                <a href="">Nhẫn kim cương</a>
-                                            </div>
-                                            <div class="row">
-                                                <div class="badge badge-danger pointer" onclick=" ">
-                                                    Xóa
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td class="column-3">
-
-                                            <div class="row " style="justify-content: right;">
-                                                <h6 style="margin-top:10px;margin-right:40px;font-weight:bold;">149.000 <u>đ</u></h6>
-                                            </div>
-                                            <div class="row" style="justify-content: right;">
-                                                <h6 style="margin-top:10px;margin-right:40px;"><del>199.000 <u>đ</u></del></h6>
-                                            </div>
-
-                                        </td>
-                                        <td class="column-4">
-                                            <div class="wrap-num-product flex-w m-l-auto m-r-0">
-                                                <div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m ">
-                                                    <i class=" fs-16 fas fa-minus"></i>
-
-                                                </div>
-
-                                                <input class="mtext-104 cl3 txt-center num-product" type="number" name="num" value="1" min="1" required>
-
-                                                <div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m ">
-                                                    <i class="fs-16 fa fa-plus"></i>
-
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td class="column-5">159.000 <u>đ</u></td>
-                                    </tr>
+                                    </tr> -->
                                 </table>
                             </div>
                         </div>
@@ -166,17 +129,17 @@
                                     </span>
                                 </div>
                                 <div class="size-209 p-t-1">
-                                    <span class="mtext-110 cl2">
-                                       125.000<u>đ</u>
+                                    <span id="total_price" class="mtext-110 cl2">
+                                        
                                     </span>
                                 </div>
                             </div>
                             <a href="./checkout.html" class="btn" style="background-color: orangered;color: white;">
                                 TIến hành Đặt hàng
                             </a>
-
                         </div>
                     </div>
+
                 </div>
             </div>
         </form>
@@ -185,9 +148,15 @@
         <div class="upper-footer">
             <ul>
                 <b>Địa chỉ:</b>
-                <li> <a href="https://www.google.com/maps/place/TT.+Nghi+Xu%C3%A2n,+Nghi+Xu%C3%A2n,+H%C3%A0+T%C4%A9nh,+Vi%E1%BB%87t+Nam/@18.6646514,105.7543351,16z/data=!3m1!4b1!4m5!3m4!1s0x3139cd2282cf1483:0x4f978238018deadc!8m2!3d18.6642304!4d105.7556564">CS1: Nghi Xuân - Hà Tĩnh</a></li>
-                <li><a href="https://www.google.com/maps/place/T%C3%A2y+S%C6%A1n,+B%C3%ACnh+%C4%90%E1%BB%8Bnh,+Vi%E1%BB%87t+Nam/@13.947235,108.7469456,11z/data=!3m1!4b1!4m5!3m4!1s0x316f219e8f9e8b27:0x78abafbfba05394e!8m2!3d13.9479428!4d108.8551484">CS2: Tây Sơn - Bình Định</a></li>
-                <li><a href="https://www.google.com/maps/place/G%C3%B2+V%E1%BA%A5p,+Th%C3%A0nh+ph%E1%BB%91+H%E1%BB%93+Ch%C3%AD+Minh,+Vi%E1%BB%87t+Nam/@10.8354056,106.6489834,14z/data=!3m1!4b1!4m5!3m4!1s0x317529078b51e6eb:0x28bd5bd9f01a1edc!8m2!3d10.8386779!4d106.6652904">CS3: Quận Gò Vấp - Thành phố Hồ Chí Minh</a></li>
+                <li> <a
+                        href="https://www.google.com/maps/place/TT.+Nghi+Xu%C3%A2n,+Nghi+Xu%C3%A2n,+H%C3%A0+T%C4%A9nh,+Vi%E1%BB%87t+Nam/@18.6646514,105.7543351,16z/data=!3m1!4b1!4m5!3m4!1s0x3139cd2282cf1483:0x4f978238018deadc!8m2!3d18.6642304!4d105.7556564">CS1:
+                        Nghi Xuân - Hà Tĩnh</a></li>
+                <li><a
+                        href="https://www.google.com/maps/place/T%C3%A2y+S%C6%A1n,+B%C3%ACnh+%C4%90%E1%BB%8Bnh,+Vi%E1%BB%87t+Nam/@13.947235,108.7469456,11z/data=!3m1!4b1!4m5!3m4!1s0x316f219e8f9e8b27:0x78abafbfba05394e!8m2!3d13.9479428!4d108.8551484">CS2:
+                        Tây Sơn - Bình Định</a></li>
+                <li><a
+                        href="https://www.google.com/maps/place/G%C3%B2+V%E1%BA%A5p,+Th%C3%A0nh+ph%E1%BB%91+H%E1%BB%93+Ch%C3%AD+Minh,+Vi%E1%BB%87t+Nam/@10.8354056,106.6489834,14z/data=!3m1!4b1!4m5!3m4!1s0x317529078b51e6eb:0x28bd5bd9f01a1edc!8m2!3d10.8386779!4d106.6652904">CS3:
+                        Quận Gò Vấp - Thành phố Hồ Chí Minh</a></li>
             </ul>
         </div>
         <div class="upper-footer">
@@ -204,8 +173,125 @@
 
     </footer>
     <script src="../../js/javascript.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+    <!-- Axios -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+
+    <script src="../../js/utility.js"></script>
+
+    <script>
+        updateCart();
+
+        async function showCart(cart) {
+            Total = 0;
+            for (i = 0; i < cart.length; i++) {
+                c = cart[i];
+                await axios.get('http://localhost:3000/product/' + c.id)
+                    .then(function (res) {
+                        console.log(res)
+                        const product = res.data.product[0]
+
+                        discountedPrice = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(product.price_sale)
+                        Price = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(product.price)
+                        totalPrice = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(product.price_sale * c.quantity)
+
+                        $('#cart-list').append(`
+                            <tr id="${product._id}" class="table_row">
+                                <td class="column-1">
+                                    <div class="how-itemcart1">
+                                        <img src="${product.image}"
+                                            alt="IMG">
+                                    </div>
+                                </td>
+                                <td class="column-2">
+                                    <div class="row">
+                                        <a href="">${product.name}</a>
+                                    </div>
+                                    <div class="row">
+                                        <div class="badge badge-danger pointer" onclick="">
+                                            Xóa
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="column-3">
+
+                                    <div class="row " style="justify-content: right;">
+                                        <h6 style="margin-top:10px;margin-right:40px;font-weight:bold;">${discountedPrice}
+                                            
+                                        </h6>
+                                    </div>
+                                    <div class="row" style="justify-content: right;">
+                                        <h6 style="margin-top:10px;margin-right:40px;"><del>${Price}
+                                                </del></h6>
+                                    </div>
+
+                                </td>
+                                <td class="column-4">
+                                    <div class="wrap-num-product flex-w m-l-auto m-r-0">
+                                        <button type="button"  class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m " onclick="reduceQuantity('${c.id}')">
+                                            <i class=" fs-16 fas fa-minus"></i>
+                                        </button>
+
+                                        <input class="mtext-104 cl3 txt-center num-product quantity" type="number"
+                                            name="num" value="${c.quantity}" min="1" required>
+
+                                        <button type="button" class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m " onclick="increaseQuantity('${c.id}')">
+                                            <i class="fs-16 fa fa-plus"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                                <td class="column-5">${totalPrice}</td>
+                            </tr>
+                        `)
+                        
+                        Total += product.price_sale * c.quantity
+                    })
+                    .catch(function (error) {
+                        console.log(error)
+                    })
+            }
+
+            Total = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(Total)
+            $('#total_price').html('');
+            $('#total_price').append(`${Total}`);
+        }
+
+        //show cart
+        storage = localStorage.getItem('cart');
+        if (storage) {
+            cart = JSON.parse(storage);
+
+            showCart(cart);
+        }
+        function reduceQuantity(id) {
+            item = cart.find(c => c.id == id);
+            item.quantity--;
+            $('#' + id +' .quantity').attr('value', item.quantity);
+            localStorage.setItem('cart', JSON.stringify(cart));
+        }
+
+        function increaseQuantity(id) {
+            item = cart.find(c => c.id == id);
+            item.quantity++;
+            $('#' + id +' .quantity').attr('value', item.quantity);
+            localStorage.setItem('cart', JSON.stringify(cart));
+        }
+
+        function removeCart(id) {
+            cart = cart.filter(c => c.id != id);
+            $('.cart__container-item').html('');
+            showCart(cart);
+            console.log(cart)
+            localStorage.setItem('cart', JSON.stringify(cart));
+        }
+    </script>
 </body>
 
 </html>

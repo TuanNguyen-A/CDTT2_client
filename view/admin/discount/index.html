@@ -212,9 +212,9 @@
 
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                            <a class="nav-link dropdown-toggle" href="../user/account.html" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Nguyễn Như Phượng</span>
+                                <span id="account-name"  class="mr-2 d-none d-lg-inline text-gray-600 small">Nguyễn Như Phượng</span>
                                 <img class="img-profile rounded-circle" src="../../../img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
@@ -351,6 +351,8 @@
         axios.get('http://localhost:3000/auth/secret', {headers: { Authorization: author}})
             .then(function (res) {
                 console.log(res)
+                user = res.data.account
+                $('#account-name').text(user.fullName)
             })
             .catch(function (error) {
                 console.log(error)
@@ -401,12 +403,16 @@
                         month = expireAt.getMonth() + 1
                         expireDate = expireAt.getHours() + ":" + expireAt.getMinutes() + " " + expireAt.getDate() + "/" + month + "/" + expireAt.getFullYear()
                         console.log(expireDate)
+
+                        priceLimitFormat = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(discount.price_limit)
+                        discountFormat = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(discount.discount)
+
                         $("#discounts").append(`
                             <tr>
                                 <th scope="row">${i + 1}</th>
                                 <td>${discount.code}</td>
-                                <td>${discount.discount}<u>đ</u></td>
-                                <td>${discount.price_limit} <u>đ</u></td>
+                                <td>${priceLimitFormat}</td>
+                                <td>${priceLimitFormat}</td>
                                 <td>${discount.purchase_current}</td>
                                 <td>${discount.purchase_limit}</td>
                                 <td>${expireDate}</td>
