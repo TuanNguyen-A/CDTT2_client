@@ -90,7 +90,7 @@
                 </a>
             </div>
 
-            <ul id="new_product-list" class="">
+            <ul id="new_product-list" class="row product-list">
                 <!-- lightSlider -->
                 <!-- <li class="item-a">
                     <div class="box">
@@ -123,7 +123,7 @@
                 <a id="gold-banner-a" href=""><img id="gold-banner-img" src="" style="width:100%"></a>
             </div>
             <div class="btn-slide-index">
-                <ul id="gold_product-list" class="">
+                <ul id="gold_product-list" class="row product-list">
                     <!-- <li class="item-a">
                         <div class="box">
                             <div class="slide-img">
@@ -155,7 +155,7 @@
                 <a id="diamond-banner-a" href=""><img id="diamond-banner-img" src="" style="width:100%"></a>
             </div>
             <div class="btn-slide-index">
-                <ul id="diamond_product-list" class="">
+                <ul id="diamond_product-list" class="row product-list">
                     <!-- <li class="item-a">
                         <div class="box">
                             <div class="slide-img">
@@ -243,7 +243,7 @@
                         if (!product.status) continue;
                         priceFormat = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(product.price)
                         $('#new_product-list').append(`
-                            <li class="item-a">
+                            <li class="col-md-4">
                                 <div class="box">
                                     <div class="slide-img">
                                         <img src="${product.image}" alt="1">
@@ -277,7 +277,7 @@
                         if (!goldproduct.status) continue;
                         priceFormat = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(goldproduct.price)
                         $('#gold_product-list').append(`
-                                <li class="item-a">
+                                <li class=" col-md-4">
                                     <div class="box">
                                         <div class="slide-img">
                                             <img src="${goldproduct.image}" alt="1">
@@ -326,7 +326,7 @@
                         if (!product.status) continue;
                         priceFormat = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(product.price)
                         $('#diamond_product-list').append(`
-                                <li class="item-a">
+                                <li class="col-md-4">
                                     <div class="box">
                                         <div class="slide-img">
                                             <img src="${product.image}" alt="1">
