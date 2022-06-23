@@ -207,14 +207,14 @@
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="./detail.html">
+                                <a class="dropdown-item" href="./account.html">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Tài khoản của tôi
                                 </a>
                                 <a class="dropdown-item" href="#">
                                     <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i> Cài đặt
                                 </a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                <a  id="btn-logout"  class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i> Đăng xuất
                                 </a>
                             </div>
@@ -250,7 +250,7 @@
                                         <input type="tel" class="form-control" name="phone" placeholder="số điện thoại"
                                             value="0707583174">
                                     </div>
-                                    <button id="btn-logout" type="button" class="btn btn-danger">Đăng xuất</button>
+                                    
                                 </div>
                             </form>
                         </div>
@@ -316,14 +316,11 @@
                 })
                 .catch(function (error) {
                     console.log(error)
-                    window.location.href = "/view/client/login.html";
+                    window.location.href = "../login.html";
                 });
 
             //Logout
-            $('#btn-logout').click(function(){
-                $.cookie("Authorization", null, { path: '/' });
-                location.reload();
-            })
+            logOut()
         </script>
 </body>
 

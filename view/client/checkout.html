@@ -179,6 +179,7 @@
                         Quận Gò Vấp - Thành phố Hồ Chí Minh</a></li>
             </ul>
         </div>
+
         <div class="upper-footer">
             <a href="tel://65652326565"><b>Hotline : 65652326565</a>
         </div>
@@ -342,7 +343,9 @@
             })
                 .then(function (response) {
                     console.log("Success",response)
-                    
+                    localStorage.removeItem('cart')
+                    alert('Đặt hàng thành công')
+                    window.open('./trangchu.html')
                 })
                 .catch(function (error) {
                     console.log(error)
@@ -356,10 +359,8 @@
             showCart(cart);
             
         } else {
-
             alert("Không có sản phẩm dễ thanh toán");
             window.open('./trangchu.html')
-
         }
         
     </script>

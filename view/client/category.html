@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tiệm trang sức | Dây chuyền</title>
+  <title>Tiệm trang sức</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link rel="stylesheet" href="../../css/style.css">
@@ -47,13 +47,14 @@
     <div class="menu-link">
       <a href="">Trang chủ</a>
       <i class="fa fa-angle-right"></i>
-      <span class="active">Dây chuyền</span>
+      <span id="cate" class="active"></span>
     </div>
 
     <div class="title-h1 bdb-afbf">
-      <h1>Dây chuyền vàng bạc
-        <span class="timecd time-sale-20"></span>
+      <h1 id="cate_head">
+        
       </h1>
+
       <div class="select-h1">
         <p>sắp xếp theo</p>
         <div class="sla-tskc bg-fff selected-s select-sort">
@@ -166,8 +167,11 @@
     search = getUrlParameter('search')
     page = getUrlParameter('page')
     if (!page) page = 1;
-    num = 5
+    num = 8
+
     const cate = getUrlParameter('cate')
+    $('#cate').text(cate)
+    $('#cate_head').text(cate)
 
     if (cate) {
       axios.get('http://localhost:3000/product/search_by_category/' + cate)

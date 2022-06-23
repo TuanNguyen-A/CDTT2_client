@@ -91,3 +91,10 @@ function updateCart() {
       `)
     }
 }
+function logOut(){
+    $('#btn-logout').click(function(){
+        console.log('Logout')
+        $.cookie("Authorization", null, { path: '/' });
+        location.reload();
+    })
+}
