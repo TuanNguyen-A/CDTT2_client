@@ -25,10 +25,10 @@
         </div>
         <div class="menu">
             <ul>
-                <li><a href="">NHẪN</a></li>
-                <li><a href="">VÒNG TAY</a></li>
-                <li><a href="">DÂY CHUYỀN</a></li>
-                <li><a href="">BÔNG TAI</a></li>
+                <li><a href="./category.html?cate=Nhẫn">NHẪN</a></li>
+                <li><a href="./category.html?cate=Vòng tay">VÒNG TAY</a></li>
+                <li><a href="./category.html?cate=Dây chuyền">DÂY CHUYỀN</a></li>
+                <li><a href="./category.html?cate=Bông tai">BÔNG TAI</a></li>
             </ul>
         </div>
         <div class="others">
@@ -108,8 +108,8 @@
                     <div style="margin-bottom:40px;">
                         <h4 class="description">Sản phẩm liên quan</h4>
                     </div>
-                    <div class="demo">
-                        <ul id="autoWidth" class="content-slider list-unstyled cS-hidden ">
+                    <div class="">
+                        <ul id="relatedProduct" class="row">
                             <!-- <li class="item">
                                 <a href="">
                                     <h5>bông tai kim cương kim cương</h5>
@@ -123,9 +123,6 @@
                                     </div>
                                 </a>
                             </li> -->
-
-
-
                         </ul>
                     </div>
 
@@ -185,6 +182,7 @@
         axios.get('http://localhost:3000/product/' + id)
             .then(function (res) {
                 product = res.data.product[0]
+                
                 console.log(product)
 
                 $('#product_name').text(product.name)
@@ -196,37 +194,47 @@
 
                 $('#product_img').attr('src', product.image)
 
-                priceFormat = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(product.price_sale)
+                priceSaleFormat = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(product.price_sale)
                 $('#product_discount_price').append(`
-                    ${priceFormat} 
+                    ${product.price_sale ? priceSaleFormat : ""} 
                 `)
+
+                if (!product.price_sale) {
+                    child = document.getElementById('product_price');
+                    child.parentElement.replaceWith(...child.parentElement.childNodes);
+                    console.log()
+                }
 
                 $('#product_content').append(`
                     ${product.content}
                 `)
 
                 category_id = product.category_id
-                
+
 
                 axios.get('http://localhost:3000/product/search_by_category_id/' + category_id)
                     .then(function (res) {
                         const products = res.data.products;
                         console.log("Diamond", products)
+                        n = products.length <= 4 ? products.length : 4
 
-                        for (i = 0; i < products.length; i++) {
+
+                        for (i = 0; i < n; i++) {
                             product = products[i]
-                            //if (product.status) continue;
-                            $('#autoWidth').append(`
-                                <li class="item">
+                            if (!product.status || product._id == id) continue;
+                            priceSaleFormat = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(product.price_sale)
+                            priceFormat = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(product.price)
+                            $('#relatedProduct').append(`
+                                <li class="col-md-3 ">
                                     <a href="">
-                                        <h5>bông tai kim cương kim cương</h5>
+                                        <h5>${product.name}</h5>
                                         <div>
                                             <img style="width:100%"
-                                                src="../../img/gl0000w000386-lac-tay-vang-trang-y-18k-pnj-01.png" alt="">
+                                                src="${product.image}" alt="">
                                         </div>
                                         <div>
-                                            <del style="color:red">199.000 <u>đ</u></del>
-                                            <p>149.000 <u>đ</u></p>
+                                            <del style="color:red">${product.price_sale ? priceFormat : ""}</del>
+                                            <p>${product.price_sale ? priceSaleFormat : priceFormat}</p>
                                         </div>
                                     </a>
                                 </li>

@@ -83,6 +83,7 @@ $("[name~=form-login]").submit(function(e) {
             }
         })
         .catch(function(error) {
+            alert('Mật khẩu hoặc tài khoản không đúng')
             console.log(error);
         });
 })
