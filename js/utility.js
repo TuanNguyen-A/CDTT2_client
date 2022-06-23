@@ -84,7 +84,7 @@ function updateCart() {
         count = 0;
         for (i = 0; i < cart.length; i++) {
             item = cart[i];
-            count += item.quantity;
+            count += Number(item.quantity);
         }
         $('.num').text(`
         ${count}

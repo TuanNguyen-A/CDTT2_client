@@ -24,6 +24,7 @@
                 <li><a href="./category.html?cate=Vòng tay">VÒNG TAY</a></li>
                 <li><a href="./category.html?cate=Dây chuyền">DÂY CHUYỀN</a></li>
                 <li><a href="./category.html?cate=Bông tai">BÔNG TAI</a></li>
+                <li><a href="./connect.html">FEEDBACK</a></li>
       </ul>
     </div>
     <div class="others">
@@ -210,8 +211,8 @@
       for (i = 0; i < products.length; i++) {
         if (i >= (page - 1) * num && i < page * num) {
           product = products[i]
-          if (!product.status) continue;
-          priceFormat = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(product.price)
+          if (!product.status || product.num==0) continue;
+          priceFormat = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(product.price_sale ? product.price_sale : product.price)
           $('#product-list').append(`
               <li>
                 <div class="product-item">

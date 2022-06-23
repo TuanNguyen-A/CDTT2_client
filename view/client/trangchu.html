@@ -29,6 +29,7 @@
                 <li><a href="./category.html?cate=Vòng tay">VÒNG TAY</a></li>
                 <li><a href="./category.html?cate=Dây chuyền">DÂY CHUYỀN</a></li>
                 <li><a href="./category.html?cate=Bông tai">BÔNG TAI</a></li>
+                <li><a href="./connect.html">FEEDBACK</a></li>
             </ul>
         </div>
         <div class="others">
@@ -236,7 +237,7 @@
                     console.log("New", products)
                     for (j = products.length; j > products.length - 6; j--) {
                         product = products[j - 1]
-                        if (!product.status) continue;
+                        if (!product.status || product.num==0) continue;
                         priceSaleFormat = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(product.price_sale)
                         priceFormat = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(product.price)
                         
@@ -274,8 +275,9 @@
                     for (i = ringproducts.length; i > ringproducts.length-6 && i>0; i--) {
                         ringproduct = ringproducts[i-1]
                         console.log(i, ringproduct)
-                        if (!ringproduct.status) continue;
-                        priceFormat = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(ringproduct.price)
+                        if (!ringproduct.status || product.num==0) continue;
+                        priceFormat = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(ringproduct.price_sale ? ringproduct.price_sale : ringproduct.price)
+
                         $('#ring_product-list').append(`
                                 <li class=" col-md-4">
                                     <div class="box">
@@ -312,8 +314,8 @@
                         console.log("OK")
                         product = products[i-1]
                         console.log(product)
-                        if (!product.status) continue;
-                        priceFormat = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(product.price)
+                        if (!product.status || product.num==0 ) continue;
+                        priceFormat = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(product.price_sale ? product.price_sale : product.price)
                         $('#necklace_product-list').append(`
                                 <li class="col-md-4">
                                     <div class="box">

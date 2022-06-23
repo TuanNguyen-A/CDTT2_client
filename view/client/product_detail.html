@@ -29,6 +29,7 @@
                 <li><a href="./category.html?cate=Vòng tay">VÒNG TAY</a></li>
                 <li><a href="./category.html?cate=Dây chuyền">DÂY CHUYỀN</a></li>
                 <li><a href="./category.html?cate=Bông tai">BÔNG TAI</a></li>
+                <li><a href="./connect.html">FEEDBACK</a></li>
             </ul>
         </div>
         <div class="others">
@@ -71,8 +72,8 @@
                                 <i class=" fs-16 fas fa-minus" aria-hidden="true"></i>
                             </div>
 
-                            <input class="mtext-104 cl3 txt-center num-product" type="number" name="num" value="1"
-                                min="1" required="">
+                            
+                            <input id="quantity" class="mtext-104 cl3 txt-center num-product" type="number" name="num" value="1" disabled>
 
                             <div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m ">
                                 <i class="fs-16 fa fa-plus" aria-hidden="true"></i>
@@ -174,12 +175,14 @@
     <script>
         updateCart();
         const id = getUrlParameter('id')
+        limitQuantity = 0;
 
         axios.get('http://localhost:3000/product/' + id)
             .then(function (res) {
                 product = res.data.product[0]
                 
-                console.log(product)
+                
+                limitQuantity = product.num
 
                 $('#product_name').text(product.name)
 
@@ -198,7 +201,6 @@
                 if (!product.price_sale) {
                     child = document.getElementById('product_price');
                     child.parentElement.replaceWith(...child.parentElement.childNodes);
-                    console.log()
                 }
 
                 $('#product_content').append(`
@@ -206,6 +208,7 @@
                 `)
 
                 category_id = product.category_id
+
 
 
                 axios.get('http://localhost:3000/product/search_by_category_id/' + category_id)
@@ -217,12 +220,12 @@
 
                         for (i = 0; i < n; i++) {
                             product = products[i]
-                            if (!product.status || product._id == id) continue;
+                            if (!product.status || product._id == id  || product.num==0) continue;
                             priceSaleFormat = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(product.price_sale)
                             priceFormat = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(product.price)
                             $('#relatedProduct').append(`
                                 <li class="col-md-3 ">
-                                    <a href="">
+                                    <a href="./product_detail.html?id=${product._id}">
                                         <h5>${product.name}</h5>
                                         <div>
                                             <img style="width:100%"
@@ -257,18 +260,26 @@
 
             item = cart.find(c => c.id == id);
             if (!item) {
+                quantity = $('#quantity').val()
                 p = {
                     'id': id,
-                    'quantity': 1
+                    'quantity': quantity
                 }
                 cart.push(p);
             }
             console.log(cart);
             localStorage.setItem('cart', JSON.stringify(cart));
-            
+
             alert("Thêm giỏ hàng thành công")
-            window.open('./trangchu.html')
+            window.location.href= "./trangchu.html";
         });
+    
+        $('.btn-num-product-up').on('click', function(e){
+            quantity = $('#quantity').val()
+            if(quantity > limitQuantity) {
+                $('#quantity').val(quantity-1)
+            }
+        })
     </script>
 </body>
 
