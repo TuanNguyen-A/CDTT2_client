@@ -24,7 +24,7 @@
                 <li><a href="./category.html?cate=Vòng tay">VÒNG TAY</a></li>
                 <li><a href="./category.html?cate=Dây chuyền">DÂY CHUYỀN</a></li>
                 <li><a href="./category.html?cate=Bông tai">BÔNG TAI</a></li>
-                <li><a href="./connect.html">FEEDBACK</a></li>
+                <li><a href="./connect.html">LIÊN HỆ</a></li>
             </ul>
         </div>
         <div class="others">
@@ -215,6 +215,7 @@
         updateCart();
         Total = 0;
         Discount = 0;
+        DiscountId = 0;
         TransportFee = 30000;
         orderProducts=[];
 
@@ -288,10 +289,11 @@
                     const discount = res.data.discounts[0];
                     console.log(discount)
                     if (discount) {
-                        if (discount.price_limit < Total) {
+                        if (discount.price_limit < Total && discount.purchase_limit > 0) {
                             if ($('#discount-apply')) $('#discount-apply').remove();
 
                             Discount = discount.discount
+                            DiscountId = discount._id
                             discountFormat = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(Discount)
                             $('#discount-area').after(`
                                 <tr id="discount-apply">
@@ -309,8 +311,14 @@
                             $('#total_2').html('');
                             $('#total_2').append(`${TotalFormat}`);
 
+                            $('#code_discount').attr('disabled', 'true')
+
                         } else {
-                            alert('Mã giảm giá áp dụng cho đơn hàng trên ' + discount.price_limit)
+                            if(discount.purchase_limit == 0){
+                                alert('Mã giảm giá đã hết')
+                            }else{
+                                alert('Mã giảm giá áp dụng cho đơn hàng trên ' + discount.price_limit)
+                            }
                         }
                     } else {
                         alert('Mã giảm giá không tồn tại')
@@ -334,6 +342,7 @@
             if(!fullname || !email || !phone || !address){
                 alert("Vui long nhập đầy đủ thông tin")
             }else{
+                
                 axios.post('http://localhost:3000/order/add', {
                     fullName: fullname,
                     email: email,
@@ -357,24 +366,37 @@
                     });
             }
 
+            // UPDATE PRODUCT QUANTITY
             storage = localStorage.getItem('cart');
             cart = JSON.parse(storage);
             for (i = 0; i < cart.length; i++) {
                 c = cart[i];
                 id = c.id
-                num = c.quantity
-                axios.post('http://localhost:3000/product/update/' + id, {
-                    num: num
+                quantity = c.quantity
+                axios.post('http://localhost:3000/product/buy/' + id, {
+                    quantity: quantity
                 })
                     .then(function (response) {
                         console.log(response)
                         //window.location.href = "/view/admin/product/index.html";
                     })
                     .catch(function(error) {
-                        alert(error.response.data.message)
+                        //alert(error.response.data.message)
                         console.log(error)
                     });
             }
+
+            // UPDATE DISCOUNT QUANTITY
+            axios.post('http://localhost:3000/discount/apply/' + DiscountId, {
+                })
+                    .then(function (response) {
+                        console.log(response)
+                        window.location.href = "/view/admin/product/index.html";
+                    })
+                    .catch(function(error) {
+                        alert(error.response.data.message)
+                        console.log(error)
+                    });
         })
 
         storage = localStorage.getItem('cart');
